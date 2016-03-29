@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="28" failures="0" name="com.mawujun.repository.config.RepositoryConfigTest" time="3.712" errors="0" skipped="0">
+<testsuite tests="28" failures="0" name="com.mawujun.repository.config.RepositoryConfigTest" time="4.308" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="E:\eclipse\aaa\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf678143092000679567.tmp"/>
+    <property name="classworlds.conf" value="E:\eclipse\aaa\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf8453333129674928187.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="D:\Program Files\Java\jdk1.8.0_65\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_66/bin/server;C:/Program Files/Java/jre1.8.0_66/bin;C:/Program Files/Java/jre1.8.0_66/lib/amd64;C:\ProgramData\Oracle\Java\javapath;D:\android-sdk_r24.0.2-windows\android-sdk-windows\platform-tools;D:\android-sdk_r24.0.2-windows\android-sdk-windows\tools;D:\Program Files\Java\jdk1.7.0_45\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\apache-ant-1.9.4\bin;D:\maven\apache-maven-3.2.1\bin;D:\app\mawujun\product\11.2.0\client_1;D:\app\mawujun\product\11.2.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;e:\Sencha\Cmd\6.1.1.76/..;C:\Users\mawujun.YOUNGOR\AppData\Roaming\npm;D:\eclipse-jee-mars-R-win32-x86_64\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -61,32 +61,32 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteCollectionOfT" time="0.225"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testDeleteSerializable" time="0.06"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryMaxCnd" time="0.126"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="queryUniqueCnd_M" time="0.261"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryUniqueCnd" time="0.004"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchUpdateCollectionOfT" time="0.703"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testUpdateDynamic" time="0.004"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchUpdateTArray" time="0.003"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteTArray" time="0.204"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteCollectionOfT" time="0.371"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testDeleteSerializable" time="0.078"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryMaxCnd" time="0.888"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="queryUniqueCnd_M" time="0.013"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryUniqueCnd" time="0.181"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchUpdateCollectionOfT" time="0.596"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testUpdateDynamic" time="0.003"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchUpdateTArray" time="0.179"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteTArray" time="0.191"/>
   <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testGet" time="0.002"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testSave" time="0.2"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryPage" time="0.19"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchSaveCollectionOfT" time="0.206"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryCountCnd" time="0.002"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryAll" time="0.221"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryCnd" time="0.193"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeletCnd" time="0.003"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="queryUniqueCnd_BaseType" time="0.169"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryCountCndProperty" time="0.218"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="queryUniqueCnd_Map" time="0.002"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchSaveTArray" time="0.18"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteAll" time="0.202"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testUpdateDynamic1" time="0.065"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testDeleteT" time="0.002"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testSaveException" time="0.05"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testUpdate" time="0.142"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBooleanType" time="0.002"/>
-  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteIDArray" time="0.073"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testSave" time="0.189"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryPage" time="0.035"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchSaveCollectionOfT" time="0.032"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryCountCnd" time="0.053"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryAll" time="0.149"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryCnd" time="0.003"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeletCnd" time="0.099"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="queryUniqueCnd_BaseType" time="0.236"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testQueryCountCndProperty" time="0.003"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="queryUniqueCnd_Map" time="0.223"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchSaveTArray" time="0.202"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteAll" time="0.189"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testUpdateDynamic1" time="0.036"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testDeleteT" time="0.105"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testSaveException" time="0.091"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testUpdate" time="0.002"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBooleanType" time="0.102"/>
+  <testcase classname="com.mawujun.repository.config.RepositoryConfigTest" name="testBatchDeleteIDArray" time="0.057"/>
 </testsuite>

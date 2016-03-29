@@ -7,9 +7,7 @@
     <artifactId>leon-module</artifactId>
     <version>1.0</version>
   </parent>
-  <groupId>com.mawujun</groupId>
   <artifactId>leon-repository</artifactId>
-  <version>1.0</version>
   <name>leon-repository</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -207,13 +205,13 @@
 		     <version>${druid.version}</version>
 		     <scope>test</scope>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc6</artifactId>
 			<version>${oracle.version}</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- 
+		 
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>

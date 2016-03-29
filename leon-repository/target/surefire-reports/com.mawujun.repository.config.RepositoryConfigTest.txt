@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.mawujun.repository.config.RepositoryConfigTest
 -------------------------------------------------------------------------------
-Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.458 sec
+Tests run: 28, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.44 sec
