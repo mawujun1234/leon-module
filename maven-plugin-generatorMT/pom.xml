@@ -34,31 +34,13 @@
       <version>3.4</version>
       <scope>provided</scope>
     </dependency>
-    
+
+
     <dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-core</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
-			
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-api</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
-			
-		</dependency>
-		<dependency>
-			<groupId>org.apache.logging.log4j</groupId>
-			<artifactId>log4j-slf4j-impl</artifactId>
-			<version>${org.apache.logging.log4j.version}</version>
-		
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${org.slf4j.version}</version>
-	
-		</dependency>
+    	<groupId>com.mawujun</groupId>
+    	<artifactId>leon-generator</artifactId>
+    	<version>${leon.version}</version>
+    </dependency>
   </dependencies>
   
   

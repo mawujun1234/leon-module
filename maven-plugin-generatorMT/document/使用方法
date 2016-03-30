@@ -1,3 +1,7 @@
+
+目的：在每次启动的时候，生成M类。
+
+
 这样配置就可以了
 <plugin>
 		        <groupId>com.mawujun</groupId>

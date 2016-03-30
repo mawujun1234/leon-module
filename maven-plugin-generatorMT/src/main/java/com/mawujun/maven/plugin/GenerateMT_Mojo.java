@@ -1,6 +1,7 @@
 package com.mawujun.maven.plugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,6 +20,8 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
+import com.mawujun.generator.MT.GeneratorMT;
+
 /**
  * 根据领域模型来生成D类和T类的代码，可以在开发当中直接使用D。User。name这样引用属性,
  * 也可以用T。leon_User.name这样引用列名
@@ -30,7 +33,7 @@ import org.apache.maven.plugins.annotations.Parameter;
  * https://maven.apache.org/guides/plugin/guide-java-plugin-development.html
  * https://maven.apache.org/guides/introduction/introduction-to-the-lifecycle.html
  * 
- *  
+ *  暂时有问题，还不能这么做
  * 
  */
 //@Mojo( name = "generateMT", defaultPhase = LifecyclePhase.PROCESS_CLASSES)
@@ -77,23 +80,24 @@ public class GenerateMT_Mojo extends AbstractMojo
     	//searchPackage="com.mawujun";
     	//targetPackage="com.mawujun.utils";
     	String search_classpath=build_outputDirectory+File.separator+searchPackage.replace('.', File.separatorChar);
+    	String java_srcpath=basedir+File.separator+"src"+File.separator+"main"+File.separator+"java"+File.separator;
     	String target_srcpath=basedir+File.separator+"src"+File.separator+"main"+File.separator+"java"+targetPackage.replace('.', File.separatorChar);
-    	getLog().info( search_classpath );
+    	getLog().info( java_srcpath );
     	getLog().info( target_srcpath );
     	
-    	watchFileChange(search_classpath);
+    	//watchFileChange(search_classpath);
+    	//暂时有问题，还不能这么做
+    	getLog().info("=============================================");
+    	//System.out.println("=============================================");
     	
-//    	getLog().info("=============================================");
-//    	//System.out.println("=============================================");
-//    	
-//    	GeneratorMT generatorMT=new GeneratorMT();
-//		try {
-//			generatorMT.generateM("com.mawujun","E:\\eclipse\\workspace\\hujibang\\src\\main\\java","com.mawujun.util");
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			getLog().info(e); 
-//		}
+    	GeneratorMT generatorMT=new GeneratorMT();
+		try {
+			generatorMT.generateM(searchPackage,java_srcpath,targetPackage);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			getLog().info(e); 
+		}
     	
     }
     WatchKey key;

@@ -373,3 +373,141 @@
 16:26:59.008 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4e
 16:26:59.010 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4f
 16:26:59.064 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:15.192 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@3d2dae
+19:01:15.195 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@1c1020a
+19:01:15.375 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@e443f9
+19:01:16.153 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@68919e
+19:01:16.154 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@c53d82
+19:01:16.343 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@170f722
+19:01:16.442 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage - ==>  Preparing: SELECT * FROM t_EntityTest limit 10 
+19:01:16.458 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage - ==> Parameters: 
+19:01:16.504 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage - <==      Total: 3
+19:01:16.506 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage_count - ==>  Preparing: select count (*) FROM t_EntityTest 
+19:01:16.506 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage_count - ==> Parameters: 
+19:01:16.509 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage_count - <==      Total: 1
+19:01:16.545 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@13a0f2b
+19:01:16.549 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1d526c
+19:01:16.552 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@3b0690
+19:01:16.559 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@70c3c2
+19:01:16.563 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@16d480c
+19:01:16.567 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@917723
+19:01:16.570 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@16f632b
+19:01:16.574 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@edee22
+19:01:16.578 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@13db8e9
+19:01:16.581 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@18a19e
+19:01:16.928 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@10ed6b4
+19:01:16.932 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@10bf683
+19:01:16.938 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1afeb6d
+19:01:16.958 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1a03c82
+19:01:16.963 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@b1127c
+19:01:16.969 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@f8676a
+19:01:16.973 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@120963d
+19:01:16.978 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@d43562
+19:01:16.982 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@b366e2
+19:01:16.987 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@b687f2
+19:01:17.172 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@1900b64
+19:01:17.407 [main] DEBUG com.mawujun.repository.config.EntityTestService - =============================================
+19:01:17.411 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1482cbf
+19:01:17.427 [main] DEBUG com.mawujun.repository.config.EntityTestService - =============================================
+19:01:17.719 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:17.720 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@21
+19:01:17.778 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:18.357 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:18.358 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@21
+19:01:18.426 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3b
+19:01:18.488 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage - ==>  Preparing: SELECT * FROM t_EntityTest order by id asc limit 10 
+19:01:18.489 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage - ==> Parameters: 
+19:01:18.491 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage - <==      Total: 3
+19:01:18.491 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage_count - ==>  Preparing: select count (*) FROM t_EntityTest 
+19:01:18.491 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage_count - ==> Parameters: 
+19:01:18.492 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage_count - <==      Total: 1
+19:01:18.513 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3c
+19:01:18.515 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3d
+19:01:18.518 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3e
+19:01:18.520 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3f
+19:01:18.523 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@40
+19:01:18.526 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@41
+19:01:18.529 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@42
+19:01:18.532 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@43
+19:01:18.536 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@44
+19:01:18.539 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@45
+19:01:18.843 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@46
+19:01:18.868 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@47
+19:01:18.870 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@48
+19:01:18.872 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@49
+19:01:18.874 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4a
+19:01:18.882 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4b
+19:01:18.884 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4c
+19:01:18.887 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4d
+19:01:18.890 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4e
+19:01:18.892 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4f
+19:01:19.016 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:44.934 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@3d2dae
+19:01:44.934 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@1c1020a
+19:01:45.057 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@e443f9
+19:01:45.661 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@68919e
+19:01:45.661 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@c53d82
+19:01:45.760 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@170f722
+19:01:45.851 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage - ==>  Preparing: SELECT * FROM t_EntityTest limit 10 
+19:01:45.866 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage - ==> Parameters: 
+19:01:45.912 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage - <==      Total: 3
+19:01:45.914 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage_count - ==>  Preparing: select count (*) FROM t_EntityTest 
+19:01:45.914 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage_count - ==> Parameters: 
+19:01:45.918 [main] DEBUG com.mawujun.repository.config.EntityTestRepository.queryPage_count - <==      Total: 1
+19:01:45.957 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@13a0f2b
+19:01:45.960 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1d526c
+19:01:45.964 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@3b0690
+19:01:45.970 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@70c3c2
+19:01:45.974 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@16d480c
+19:01:45.977 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@917723
+19:01:45.980 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@16f632b
+19:01:45.984 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@edee22
+19:01:45.988 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@13db8e9
+19:01:45.992 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@18a19e
+19:01:46.357 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@10ed6b4
+19:01:46.360 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@10bf683
+19:01:46.364 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1afeb6d
+19:01:46.368 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1a03c82
+19:01:46.372 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@b1127c
+19:01:46.376 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@f8676a
+19:01:46.379 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@120963d
+19:01:46.383 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@d43562
+19:01:46.385 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@b366e2
+19:01:46.385 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@b687f2
+19:01:46.520 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.config.EntityTest@1900b64
+19:01:46.824 [main] DEBUG com.mawujun.repository.config.EntityTestService - =============================================
+19:01:46.829 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.config.EntityTest@1482cbf
+19:01:46.844 [main] DEBUG com.mawujun.repository.config.EntityTestService - =============================================
+19:01:47.080 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:47.082 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@21
+19:01:47.163 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:47.725 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20
+19:01:47.726 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@21
+19:01:47.819 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3b
+19:01:47.870 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage - ==>  Preparing: SELECT * FROM t_EntityTest order by id asc limit 10 
+19:01:47.871 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage - ==> Parameters: 
+19:01:47.874 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage - <==      Total: 3
+19:01:47.875 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage_count - ==>  Preparing: select count (*) FROM t_EntityTest 
+19:01:47.875 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage_count - ==> Parameters: 
+19:01:47.876 [main] DEBUG com.mawujun.repository.EquipmentTypeRepository.queryPage_count - <==      Total: 1
+19:01:47.896 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3c
+19:01:47.898 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3d
+19:01:47.899 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3e
+19:01:47.901 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@3f
+19:01:47.903 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@40
+19:01:47.905 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@41
+19:01:47.907 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@42
+19:01:47.910 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@43
+19:01:47.912 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@44
+19:01:47.914 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@45
+19:01:48.280 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@46
+19:01:48.282 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@47
+19:01:48.284 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@48
+19:01:48.286 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@49
+19:01:48.289 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4a
+19:01:48.297 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4b
+19:01:48.301 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4c
+19:01:48.304 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4d
+19:01:48.308 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4e
+19:01:48.311 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - save entity: com.mawujun.repository.EntityTest@4f
+19:01:48.451 [main] DEBUG com.mawujun.repository.hibernate.HibernateDao - delete entity: com.mawujun.repository.EntityTest@20

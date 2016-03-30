@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.mawujun</groupId>
 	<artifactId>leon-module</artifactId>
 	<version>1.0</version>
 	<packaging>pom</packaging>
+	<!--  
 	<repositories>
-        <repository>
-            <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://localhost:9090/nexus/content/groups/public</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>nexus</id>
-            <name>Team Nexus Repository</name>
-            <url>http://localhost:9090/nexus/content/groups/public</url>
-        </pluginRepository>
-    </pluginRepositories>
-    
+		<repository>
+			<id>nexus</id>
+			<name>Team Nexus Repository</name>
+			<url>http://localhost:9090/nexus/content/groups/public</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>nexus</id>
+			<name>Team Nexus Repository</name>
+			<url>http://localhost:9090/nexus/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+-->
 	<modules>
 		<module>leon-generator</module>
 		<module>leon-utils</module>
@@ -30,7 +32,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.12</junit.version>
-		
+
 		<org.aspectj.version>1.8.6</org.aspectj.version>
 		<org.springframework.version>4.2.5.RELEASE</org.springframework.version>
 
@@ -41,23 +43,23 @@
 		<org.mybatis.version>3.3.1</org.mybatis.version>
 		<org.mybatis-spring.version>1.2.4</org.mybatis-spring.version>
 		<net.sf.ehcache.version>2.10.0</net.sf.ehcache.version>
-		
+
 		<org.apache.logging.log4j.version>2.5</org.apache.logging.log4j.version>
 		<org.slf4j.version>1.7.18</org.slf4j.version>
-		
+
 		<com.fasterxml.jackson.core.version>2.6.4</com.fasterxml.jackson.core.version>
 		<com.jayway.jsonpath.version>2.0.0</com.jayway.jsonpath.version>
 		<com.thoughtworks.xstream.version>1.4.8</com.thoughtworks.xstream.version>
-		
+
 		<mysql.version>5.1.36</mysql.version>
 		<druid.version>1.0.17</druid.version>
 		<oracle.version>11.2</oracle.version>
 		<tomcat.version>8.0.30</tomcat.version>
-		
-		
-		
+
+
+
 		<leon.version>1.0</leon.version>
-		
+
 	</properties>
 
 	<dependencies>
@@ -66,6 +68,31 @@
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${org.apache.logging.log4j.version}</version>
+
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${org.apache.logging.log4j.version}</version>
+
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>${org.apache.logging.log4j.version}</version>
+
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${org.slf4j.version}</version>
+
 		</dependency>
 	</dependencies>
 </project>

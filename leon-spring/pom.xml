@@ -7,9 +7,8 @@
     <artifactId>leon-module</artifactId>
     <version>1.0</version>
   </parent>
-  <groupId>com.mawujun</groupId>
   <artifactId>leon-spring</artifactId>
-  <version>1.0</version>
+
   <name>leon-spring</name>
   <url>http://maven.apache.org</url>
 
@@ -36,7 +35,7 @@
 		</dependency>
 		<dependency>
 			<groupId>com.mawujun</groupId>
-			<artifactId>leon-utils</artifactId>
+			<artifactId>leon-util</artifactId>
 			<version>${leon.version}</version>
 		</dependency>
 		<!-- 
