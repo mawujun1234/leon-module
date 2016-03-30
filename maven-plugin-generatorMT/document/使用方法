@@ -1,0 +1,19 @@
+这样配置就可以了
+<plugin>
+		        <groupId>com.mawujun</groupId>
+		        <artifactId>maven-plugin-generatorMT</artifactId>
+		        <version>1.0</version>
+		        <configuration>
+					<searchPackage>com.youngor</searchPackage>
+					<targetPackage>com.youngor.utils</targetPackage>
+				</configuration>
+		        <executions>
+		          <execution>
+		            <phase>process-classes</phase>
+		            <goals>
+		              <goal>generateMT</goal>
+		            </goals>
+		          </execution>
+		        </executions>
+		         
+		     </plugin>

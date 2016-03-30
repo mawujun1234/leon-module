@@ -1,9 +1,23 @@
 package com.mawujun.maven.plugin;
 
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardWatchEventKinds;
+import java.nio.file.WatchEvent;
+import java.nio.file.WatchKey;
+import java.nio.file.WatchService;
+import java.util.List;
+import java.util.concurrent.Executors;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
+import org.apache.maven.plugins.annotations.Parameter;
 
 /**
  * 根据领域模型来生成D类和T类的代码，可以在开发当中直接使用D。User。name这样引用属性,
@@ -23,36 +37,51 @@ import org.apache.maven.plugins.annotations.Mojo;
 @Mojo( name = "generateMT", defaultPhase = LifecyclePhase.PROCESS_CLASSES)
 public class GenerateMT_Mojo extends AbstractMojo
 {
-//    /**
-//     * class文件编译的目录
-//     * 
-//     */
-//	@Parameter
-//    private List<String> classpathDirectorys;
-//	/**
-//	 * 加载classpathDirectorys目录下的class的时候会依赖其他类，这里就是加依赖类的
-//	 * @parameter
-//	 */
-//	@Parameter
-//    private List<String> packageNames;
-//	@Parameter
-//    private List<String> excludePackageNames;
-//	/**
-//	 * 超找指定了annotationClass的类作为实体类
-//	 * 
-//	 */
-//	//@Parameter
-//	//private String annotationClassName;
+
 //	private Class annotationClass=javax.persistence.Entity.class;
 //	private Class annotationTable=javax.persistence.Table.class;
-//	@Parameter
-//	private String targetMDir;
+	private static Logger logger = LogManager.getLogger(GenerateMT_Mojo.class.getName());
+	
+	@Parameter(defaultValue="${basedir}")
+	private String basedir;//项目根目录
+	@Parameter(defaultValue="${project.build.directory}")
+	private String build_directory;//构建目录，缺省为target
+	@Parameter(defaultValue="${project.build.outputDirectory}")
+	private String build_outputDirectory;//构建过程输出目录，缺省为target/classes
+
+	/**
+	 * 要去搜索的报名
+	 */
+	@Parameter
+	private String searchPackage;
+	/**
+	 * 生成的类放在哪个包名下
+	 */
+	@Parameter
+	private String targetPackage;
 
     public void execute()
         throws MojoExecutionException
     {
-    	getLog().info( "Hello, world." );
+    	if(searchPackage==null || "".equals(searchPackage.trim())){
+    		throw new IllegalArgumentException("searchPackage必须输入值1");
+    	}
+    	if(targetPackage==null || "".equals(targetPackage.trim())){
+    		throw new IllegalArgumentException("targetPackage必须输入值1");
+    	}
+    	getLog().info( basedir );
+    	getLog().info( build_directory );
+    	getLog().info( build_outputDirectory );
     	System.out.println("===============================================================");
+    	//组装成搜索class的目录
+    	//searchPackage="com.mawujun";
+    	//targetPackage="com.mawujun.utils";
+    	String search_classpath=build_outputDirectory+File.separator+searchPackage.replace('.', File.separatorChar);
+    	String target_srcpath=basedir+File.separator+"src"+File.separator+"main"+File.separator+"java"+targetPackage.replace('.', File.separatorChar);
+    	getLog().info( search_classpath );
+    	getLog().info( target_srcpath );
+    	
+    	watchFileChange(search_classpath);
     	
 //    	getLog().info("=============================================");
 //    	//System.out.println("=============================================");
@@ -66,49 +95,64 @@ public class GenerateMT_Mojo extends AbstractMojo
 //			getLog().info(e); 
 //		}
     	
-//    	try {
-//    		
-//    		
-//    		
-//    		URL[] urls=new URL[classpathDirectorys.size()];
-//    		int i=0;
-//    		for(String classpathDirectory:classpathDirectorys){
-//    			getLog().info("设置classpath:"+classpathDirectory);
-//    			File xFile=new File(classpathDirectory);  
-//        		URL  url= xFile.toURI().toURL();  
-//        		urls[i]=url;
-//        		i++;
-//    		}
-//    		
-//			URLClassLoader myloader = new URLClassLoader(urls, Thread.currentThread().getContextClassLoader());
-//			//annotationClass=myloader.loadClass(annotationClassName);
-//			
-//			
-//			
-//			List<Class> clazzs =new ArrayList<Class>();
-//			for(String packageName:packageNames){
-//				 List<Class> clazzss = getClasssFromPackage(myloader,packageName);//  
-//				  clazzs.addAll(clazzss);
-//			}
-//			getLog().info("找到实体类的个数为:"+clazzs.size()); 
-//			
-//			
-//		  
-//			getLog().info("=============================================开始生成D的代码");
-//			generateM(clazzs);
-//			generateT(clazzs);
-//
-//		}  catch (MalformedURLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			 getLog().info(e.getMessage()); 
-//		}  catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} 
-    	
-    	
     }
+    WatchKey key;
+//    <T> WatchEvent<T> cast(WatchEvent<?> event) {
+//        return (WatchEvent<T>) event;
+//    }
+    /**
+     * 实时监控文件的变化
+     * @author mawujun email:160649888@163.com qq:16064988
+     */
+    public void watchFileChange(final String search_classpath){
+    	//File sourceDirectory=new File(search_classpath);
+    	logger.info("开始监控指定目录的文件变动");
+    	Executors.newCachedThreadPool().submit(new Runnable() {  
+            public void run() {  
+                try {  
+                    WatchService watchService = FileSystems.getDefault().newWatchService();  
+                    Path dirpath = Paths.get(search_classpath);  
+                    // 注册监听器  
+                    key=dirpath.register(watchService, StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_DELETE,StandardWatchEventKinds.ENTRY_MODIFY);  
+                    while (true) {  
+                        // 阻塞方式，消费文件更改事件  
+                        List<WatchEvent<?>> watchEvents = watchService.take().pollEvents();  
+                        //System.out.println(watchEvents.size());
+                        
+                        //String tempFile=null;
+                        for (WatchEvent<?> watchEvent : watchEvents) {  
+                        	Path path = (Path)watchEvent.context();
+                        	if(path!=null){	
+                        		logger.info(String.format("[%s]文件发生了[%s]事件。%n", path.toAbsolutePath().getFileName(), watchEvent.kind()));
+//                                //logger.info("[%s]文件发生了[%s]事件。%n", path.toAbsolutePath().getFileName(), watchEvent.kind());
+//                                //logger.info(watchEvent.count());
+//                                //logger.info(path.toFile().getPath());
+//                        		System.out.printf("[%s]文件发生了[%s]事件。%n", path, watchEvent.kind()); 
+//                        		//System.out.println(watchEvent.count());
+//                                //System.out.println(path.toFile().getAbsolutePath());
+//                                String absolutePath= path.toString();//path.toFile().getAbsolutePath();
+//                                if(!absolutePath.endsWith(".TMP") && !absolutePath.endsWith(".tmp")){
+//                                	 System.out.println("执行的次数....."+path);
+//                                	 //现在如果文件变大后，可能效率不是很高，以后有机会，具体判断，具体修改，效果会好点
+//                                	 try {
+//                                     	FileUtils.copyDirectoryStructureIfModified(sourceDirectory, destinationDirectory);
+//                                     } catch(IOException e) {
+//                                     	//logger.error(e);
+//                                     }
+//                                }
+                        	}
+                           
+                        }  
+                        key.reset();
+                    }  
+                } catch(Exception e) {
+                	e.printStackTrace();
+                }  
+            }  
+        });  
+    }
+    
+    
 //    /**
 //     * 产生表的字段名
 //     * @author mawujun email:160649888@163.com qq:16064988

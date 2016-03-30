@@ -46,8 +46,8 @@ public class GeneratorMT {
 	 * 搜索某个路径下面，标注了@Entity的类，并生成和android中的R类似的类，M
 	 * @author mawujun email:160649888@163.com qq:16064988
 	 * @param packageName 从哪些包中进行搜索
-	 * @param targetMDir 生成的目标地址 :E:\\eclipse\\workspace\\hujibang\\src\\main\\java
-	 * @param targetPackage com.mawujun.utils
+	 * @param targetMDir 生成的目标地址 存放在那个路径下:E:\\eclipse\\workspace\\hujibang\\src\\main\\java，最终的目录是targetMDir+targetPackage
+	 * @param targetPackage com.mawujun.utils 生成的类的包名
 	 * @throws IOException
 	 */
 	public void generateM(String packageName,String targetMDir,String targetPackage) throws IOException{
