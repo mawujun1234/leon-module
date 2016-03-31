@@ -33,7 +33,20 @@ public interface IHibernateDao <T, ID extends Serializable>{
 	
 	public void delete(T entity);
 	public void deleteById(ID id);
+	/**
+	 * 直接从后台查询数据库
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param id
+	 * @return
+	 */
 	public T get(ID id);
+	/**
+	 * 获取对象，单不查询数据库
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param id
+	 * @return
+	 */
+	public T load(ID id);
 	
 	
 	

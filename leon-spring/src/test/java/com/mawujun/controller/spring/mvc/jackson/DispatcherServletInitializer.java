@@ -45,7 +45,11 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 		//return new String[] { "/" };
 		return new String[] {"*.do" };
 	}
-	
+	/**
+	 *  
+     * 注册过滤器，映射路径与DispatcherServlet一致，路径不一致的过滤器需要注册到另外的WebApplicationInitializer中 
+     * 参考ShiroWebApplicationInitializer
+	 */
 	@Override
     protected Filter[] getServletFilters() {
 		CharacterEncodingFilter filter=new CharacterEncodingFilter();

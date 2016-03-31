@@ -1,104 +1,103 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="51" failures="0" name="com.mawujun.repository.cnd.CndTest" time="0.199" errors="0" skipped="0">
+<testsuite tests="51" failures="0" name="com.mawujun.repository.cnd.CndTest" time="0.276" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="D:\Program Files (x86)\Java\jdk8\bin"/>
-    <property name="java.vm.version" value="25.77-b03"/>
+    <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
+    <property name="java.vm.version" value="25.65-b01"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="$M2_HOME"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
     <property name="file.encoding.pkg" value="sun.io"/>
     <property name="user.script" value=""/>
     <property name="user.country" value="CN"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="E:\eclipse\workspace\leon-module"/>
-    <property name="java.runtime.version" value="1.8.0_77-b03"/>
+    <property name="user.dir" value="E:\eclipse\aaa\leon-module\leon-repository"/>
+    <property name="java.runtime.version" value="1.8.0_65-b17"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="java.endorsed.dirs" value="D:\Program Files (x86)\Java\jdk8\lib\endorsed"/>
-    <property name="os.arch" value="x86"/>
-    <property name="java.io.tmpdir" value="C:\Users\mawujun\AppData\Local\Temp\"/>
+    <property name="java.endorsed.dirs" value="D:\Program Files\Java\jdk1.8.0_65\jre\lib\endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="C:\Users\MAWUJU~1.YOU\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="E:\eclipse\workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf2104792235016386418.tmp"/>
+    <property name="classworlds.conf" value="E:\eclipse\aaa\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4130666894397662870.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
-    <property name="java.library.path" value="D:\Program Files (x86)\Java\jdk8\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;D:\apache-ant-1.9.4\BIN;d:\adt-bundle-windows-x86-20140702\sdk\tools;d:\adt-bundle-windows-x86-20140702\sdk\platform-tools;d:\Program Files (x86)\Java\jdk1.7.0_51\\bin;D:\app\mawujun\product\11.2.0\client_1;D:\app\mawujun\product\11.2.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\nodejs\;D:\Program Files\TortoiseSVN\binFiles\TortoiseSVN\bin;D:\mysql-5.7.9-winx64\bin;C:\Program Files (x86)\Skype\Phone\;C:\Users\mawujun\AppData\Roaming\npm;D:\搜狐影音\5.0.1.75;."/>
+    <property name="java.library.path" value="D:\Program Files\Java\jdk1.8.0_65\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_66/bin/server;C:/Program Files/Java/jre1.8.0_66/bin;C:/Program Files/Java/jre1.8.0_66/lib/amd64;C:\ProgramData\Oracle\Java\javapath;D:\android-sdk_r24.0.2-windows\android-sdk-windows\platform-tools;D:\android-sdk_r24.0.2-windows\android-sdk-windows\tools;D:\Program Files\Java\jdk1.7.0_45\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\apache-ant-1.9.4\bin;D:\maven\apache-maven-3.2.1\bin;D:\app\mawujun\product\11.2.0\client_1;D:\app\mawujun\product\11.2.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;e:\Sencha\Cmd\6.1.1.76/..;C:\Users\mawujun.YOUNGOR\AppData\Roaming\npm;D:\eclipse-jee-mars-R-win32-x86_64\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
-    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="os.version" value="6.1"/>
-    <property name="user.home" value="C:\Users\mawujun"/>
+    <property name="user.home" value="C:\Users\mawujun.YOUNGOR"/>
     <property name="user.timezone" value="Asia/Shanghai"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.8"/>
-    <property name="file.encoding" value="UTF-8"/>
+    <property name="file.encoding" value="GBK"/>
     <property name="user.name" value="mawujun"/>
-    <property name="java.class.path" value="D:\apache-maven\apache-maven-3.3.3\boot\plexus-classworlds-2.5.2.jar"/>
+    <property name="java.class.path" value="D:\maven\apache-maven-3.2.1\boot\plexus-classworlds-2.5.1.jar"/>
+    <property name="org.slf4j.simpleLogger.defaultLogLevel" value="info"/>
     <property name="java.vm.specification.version" value="1.8"/>
-    <property name="sun.arch.data.model" value="32"/>
-    <property name="java.home" value="D:\Program Files (x86)\Java\jdk8"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -B -s D:\apache-maven\apache-maven-3.3.3\conf\settings.xml install"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="D:\Program Files\Java\jdk1.8.0_65\jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -B -s D:\maven\apache-maven-3.2.1\conf\settings.xml install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.vm.info" value="mixed mode"/>
-    <property name="java.version" value="1.8.0_77"/>
-    <property name="java.ext.dirs" value="D:\Program Files (x86)\Java\jdk8\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
-    <property name="sun.boot.class.path" value="D:\Program Files (x86)\Java\jdk8\lib\resources.jar;D:\Program Files (x86)\Java\jdk8\lib\rt.jar;D:\Program Files (x86)\Java\jdk8\lib\sunrsasign.jar;D:\Program Files (x86)\Java\jdk8\lib\jsse.jar;D:\Program Files (x86)\Java\jdk8\lib\jce.jar;D:\Program Files (x86)\Java\jdk8\lib\charsets.jar;D:\Program Files (x86)\Java\jdk8\lib\jfr.jar;D:\Program Files (x86)\Java\jdk8\classes"/>
+    <property name="java.version" value="1.8.0_65"/>
+    <property name="java.ext.dirs" value="D:\Program Files\Java\jdk1.8.0_65\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\Program Files\Java\jdk1.8.0_65\jre\lib\resources.jar;D:\Program Files\Java\jdk1.8.0_65\jre\lib\rt.jar;D:\Program Files\Java\jdk1.8.0_65\jre\lib\sunrsasign.jar;D:\Program Files\Java\jdk1.8.0_65\jre\lib\jsse.jar;D:\Program Files\Java\jdk1.8.0_65\jre\lib\jce.jar;D:\Program Files\Java\jdk1.8.0_65\jre\lib\charsets.jar;D:\Program Files\Java\jdk1.8.0_65\jre\lib\jfr.jar;D:\Program Files\Java\jdk1.8.0_65\jre\classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="maven.home" value="D:\apache-maven\apache-maven-3.3.3"/>
+    <property name="maven.home" value="D:\maven\apache-maven-3.2.1"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="maven.bootclasspath" value="D:\apache-maven\apache-maven-3.3.3\boot\plexus-classworlds-2.5.2.jar"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.desktop" value="windows"/>
-    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotLike_ignoreCase" time="0.168"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andGTE" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotLike_ignoreCase" time="0.204"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andGTE" time="0.001"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLTE" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotInInt" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInByHql" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIn_name" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotInInt" time="0.023"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInByHql" time="0.009"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIn_name" time="0.01"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orInInt" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIn" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="testWhere" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="insert" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIn" time="0.001"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="testWhere" time="0.006"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="insert" time="0.001"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotLike" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLike_ignoreCase" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLike" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInInt" time="0.015"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInInt" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIn" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="select" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="select" time="0.013"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLike" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="update" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="update" time="0.001"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLike_ignoreCase" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andEquals" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotEquals" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIsNull" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIsNull" time="0.001"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="asc" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="avg" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="max" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="min" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="min" time="0.003"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="sum" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="desc" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orGT" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orIn" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLT" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotEquals" time="0.016"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotEquals" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIsNull" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andGT" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIn" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLT" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orGTE" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orGTE" time="0.003"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLTE" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIsNull" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orEquals" time="0"/>
