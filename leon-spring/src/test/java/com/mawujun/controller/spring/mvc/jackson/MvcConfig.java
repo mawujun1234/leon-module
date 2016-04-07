@@ -28,6 +28,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mawujun.controller.spring.SpringContextHolder;
 import com.mawujun.controller.spring.mvc.DateConverter;
 import com.mawujun.controller.spring.mvc.exception.MappingExceptionResolver;
 
@@ -39,6 +40,11 @@ import com.mawujun.controller.spring.mvc.exception.MappingExceptionResolver;
 @EnableWebMvc
 public class MvcConfig extends WebMvcConfigurerAdapter {
 	private SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	
+	@Bean
+	public SpringContextHolder springContextHolder(){
+		return new SpringContextHolder();
+	}
 	
 	@Bean
 	public ObjectMapper getObjectMapper(){

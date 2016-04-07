@@ -86,7 +86,7 @@ public class Pager<T> {
 	 * @param params
 	 * @return
 	 */
-	public Pager addParam(String key,Object value) {
+	public Pager<T> addParam(String key,Object value) {
 		if(value==null || "".equals(value)){
 			return this;
 		}
@@ -95,6 +95,16 @@ public class Pager<T> {
 		}
 		((Map<String,Object>)this.params).put(key, value);
 		return this;
+	}
+	
+	public Pager<T> addParam_like(String key,String value) {
+		if(value==null || "".equals(value)){
+			return this;
+		} else {
+			value="%"+value+"%";
+			addParam(key,value);
+			return this;
+		}
 	}
 
 	public void setPage(int page) {
