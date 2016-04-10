@@ -27,7 +27,6 @@
 		<module>leon-utils</module>
 		<module>leon-spring</module>
 		<module>leon-repository</module>
-		<module>maven-plugin-generatorMT</module>
 	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
