@@ -14,11 +14,7 @@
 
   <properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!-- 
-		<org.apache.logging.log4j.version>2.3</org.apache.logging.log4j.version>
-		<com.fasterxml.jackson.core.version>2.6.4</com.fasterxml.jackson.core.version>
-		<org.hibernate.version>5.1.0.Final</org.hibernate.version>
- -->
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -45,6 +41,27 @@
 			<version>${leon.version}</version>
 		</dependency>
 		 -->
+		 
+		 <dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-core</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-web</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-ehcache</artifactId>
+			<version>${shiro.version}</version>
+		</dependency>
 		
 
 		<dependency>

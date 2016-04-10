@@ -1,0 +1,1 @@
+1:在使用这个的时候，系统的user必须继承IShiroUser接口，因为在ShiroKickoutSessionControlFilter接口中要获取用户的登录名，来判断这个用户登陆了几个

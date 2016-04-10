@@ -55,7 +55,7 @@
 		<oracle.version>11.2</oracle.version>
 		<tomcat.version>8.0.30</tomcat.version>
 
-
+		<shiro.version>1.2.4</shiro.version>
 
 		<leon.version>1.0</leon.version>
 
