@@ -50,7 +50,7 @@
 		<com.jayway.jsonpath.version>2.0.0</com.jayway.jsonpath.version>
 		<com.thoughtworks.xstream.version>1.4.8</com.thoughtworks.xstream.version>
 
-		<mysql.version>5.1.36</mysql.version>
+		<mysql.version>5.1.38</mysql.version>
 		<druid.version>1.0.17</druid.version>
 		<oracle.version>11.2</oracle.version>
 		<tomcat.version>8.0.30</tomcat.version>
