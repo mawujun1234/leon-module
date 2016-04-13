@@ -226,21 +226,40 @@ public class Cnd implements PItem{
 		return this;
 	}
 
-	public Cnd andNotIsNull(String name) {
+	public Cnd andIsNotNull(String name) {
 		this.getWhere().andNotIsNull(name);
 		return this;
 	}
-	
+	/**
+	 * 如果val为unll，就添加 name is null的过滤条件
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param name
+	 * @param val
+	 * @return
+	 */
 	public Cnd andEquals(String name, Object val) {
 		if (null == val)
 			return andIsNull(name);
 		this.getWhere().andEquals(name, val);
 		return this;
 	}
+	/**
+	 * 如果val为null，就不添加这个过滤条件
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param name
+	 * @param val
+	 * @return
+	 */
+	public Cnd andEqualsIf(String name, Object val) {
+		if (null == val)
+			return this;
+		this.getWhere().andEquals(name, val);
+		return this;
+	}
 
 	public Cnd andNotEquals(String name, Object val) {
 		if (null == val)
-			return andNotIsNull(name);
+			return andIsNotNull(name);
 		this.getWhere().andNotEquals(name, val);
 		return this;
 

@@ -1,16 +1,18 @@
 package com.mawujun.controller.spring.mvc.exception;
 
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 import com.mawujun.exception.BusinessException;
 
 public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
+	
+	private static Logger logger=LogManager.getLogger(MappingExceptionResolver.class);
 	
 	private String errorMsgAttribute = "errorMsg";//异常消息的属性名称，可以自定义,也就是对异常进行文字化描述，而不是其他信息
 	private String defaultErrorMsg="操作失败，请稍候重试!如果多次操作无效,请联系管理员!";
@@ -42,6 +44,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	 * @return
 	 */
 	protected String determineErrorMsg( String viewName, Exception ex) {
+		logger.info(ex);
 		if(ex instanceof BusinessException){
 			return ((BusinessException)ex).getMessage();
 		} else if (this.errorMsgs.containsKey(ex.getClass())) {

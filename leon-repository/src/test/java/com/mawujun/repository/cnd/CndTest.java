@@ -160,7 +160,7 @@ public class CndTest  extends DbunitBaseRepositoryTest {
 	public void andNotIsNull() {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		
-		Cnd cnd0=Cnd.select().andNotIsNull("parent.name");
+		Cnd cnd0=Cnd.select().andIsNotNull("parent.name");
 		assertEquals("from com.mawujun.repository.EntityTest WHERE parent.name IS NOT NULL ",cnd0.toHql(classMetadata));
 	}
 	
@@ -318,7 +318,7 @@ public class CndTest  extends DbunitBaseRepositoryTest {
 	public void orNotIsNull() {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		
-		Cnd cnd0=Cnd.select().andNotIsNull("parent.name").orNotIsNull("parent.name");
+		Cnd cnd0=Cnd.select().andIsNotNull("parent.name").orNotIsNull("parent.name");
 		assertEquals("from com.mawujun.repository.EntityTest WHERE parent.name IS NOT NULL  OR parent.name IS NOT NULL ",cnd0.toHql(classMetadata));
 	}
 	

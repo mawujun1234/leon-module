@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="51" failures="0" name="com.mawujun.repository.cnd.CndTest" time="0.256" errors="0" skipped="0">
+<testsuite tests="51" failures="0" name="com.mawujun.repository.cnd.CndTest" time="0.144" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="D:\Program Files\Java\jdk1.8.0_65\jre\bin"/>
@@ -26,7 +26,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
-    <property name="classworlds.conf" value="E:\eclipse\aaa\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf3684676162960355910.tmp"/>
+    <property name="classworlds.conf" value="E:\eclipse\aaa\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf1560681273259973863.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="D:\Program Files\Java\jdk1.8.0_65\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_66/bin/server;C:/Program Files/Java/jre1.8.0_66/bin;C:/Program Files/Java/jre1.8.0_66/lib/amd64;C:\ProgramData\Oracle\Java\javapath;D:\android-sdk_r24.0.2-windows\android-sdk-windows\platform-tools;D:\android-sdk_r24.0.2-windows\android-sdk-windows\tools;D:\Program Files\Java\jdk1.7.0_45\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\apache-ant-1.9.4\bin;D:\maven\apache-maven-3.2.1\bin;D:\app\mawujun\product\11.2.0\client_1;D:\app\mawujun\product\11.2.0\dbhome_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\Program Files\TortoiseSVN\bin;D:\Program Files\nodejs\;e:\Sencha\Cmd\6.1.1.76/..;C:\Users\mawujun.YOUNGOR\AppData\Roaming\npm;D:\eclipse-jee-mars-R-win32-x86_64\eclipse;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -61,39 +61,39 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotLike_ignoreCase" time="0.179"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andGTE" time="0.016"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLTE" time="0.001"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotInInt" time="0.012"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInByHql" time="0.016"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIn_name" time="0.002"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotLike_ignoreCase" time="0.1"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andGTE" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLTE" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotInInt" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInByHql" time="0.004"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIn_name" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orInInt" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIn" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="testWhere" time="0.008"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="testWhere" time="0.029"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="insert" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotLike" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLike_ignoreCase" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLike" time="0.001"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLike" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andInInt" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIn" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="select" time="0.006"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="select" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLike" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="update" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLike_ignoreCase" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andEquals" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotEquals" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIsNull" time="0.001"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIsNull" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="asc" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="avg" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="max" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="min" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="sum" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="desc" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orGT" time="0.004"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orGT" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orIn" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orLT" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotEquals" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIsNull" time="0.001"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIsNull" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andGT" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andIn" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andLT" time="0"/>
@@ -102,14 +102,14 @@
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIsNull" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orEquals" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orIsNull" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotLike_ignoreCase" time="0.001"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotInByHql" time="0.001"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIn_name" time="0.001"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotLike_ignoreCase" time="0.009"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotInByHql" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotIn_name" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="selectDistinct" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotInInt" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orInByHql" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orIn_name" time="0.006"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="orIn_name" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="orNotLike" time="0"/>
   <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotInByHql" time="0"/>
-  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIn_name" time="0"/>
+  <testcase classname="com.mawujun.repository.cnd.CndTest" name="andNotIn_name" time="0.002"/>
 </testsuite>
