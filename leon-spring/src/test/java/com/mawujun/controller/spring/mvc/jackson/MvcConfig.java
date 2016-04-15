@@ -18,6 +18,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -142,7 +143,17 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
         return simpleMappingExceptionResolver;  
     }  
-
+	/**
+	 * 方法名必须是multipartResolver
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @return
+	 */
+	@Bean
+	public CommonsMultipartResolver multipartResolver(){
+		CommonsMultipartResolver commonsMultipartResolver=new CommonsMultipartResolver();
+		commonsMultipartResolver.setMaxUploadSize(204800);
+		return commonsMultipartResolver;
+	}
 	@Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //        registry.addResourceHandler("/bootstrap/**").addResourceLocations("/bootstrap/").setCachePeriod(31556926);
