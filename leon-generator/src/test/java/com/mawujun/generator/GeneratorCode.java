@@ -21,7 +21,6 @@ public class GeneratorCode {
 		aa.extjs_packagePrefix = "y";
 		aa.extjs_form_layoutColumns = -1;
 
-		aa.extjs_grid_store_userModel = false;
 		aa.extjs_grid_createDelUpd_button = true;
 		generatorService.setExtenConfig(aa);
 

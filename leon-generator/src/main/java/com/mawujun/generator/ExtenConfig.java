@@ -20,10 +20,10 @@ public class ExtenConfig {
 	 * columns的数值就是分几列
 	 */
 	public Integer extjs_form_layoutColumns=-1;
-	/**
-	 * 在生成的grid中是使用model中的proxy还是使用自己定义的proxy
-	 */
-	public boolean extjs_grid_store_userModel=true;
+//	/**
+//	 * 在生成的grid中是使用model中的proxy还是使用自己定义的proxy
+//	 */
+//	public boolean extjs_grid_store_userModel=true;
 	/**
 	 * 是否创建增，删，改，查的按钮
 	 */
@@ -55,14 +55,6 @@ public class ExtenConfig {
 
 	public void setExtjs_treeForm_model(boolean extjs_treeForm_model) {
 		this.extjs_treeForm_model = extjs_treeForm_model;
-	}
-
-	public boolean getExtjs_grid_store_userModel() {
-		return extjs_grid_store_userModel;
-	}
-
-	public void setExtjs_grid_store_userModel(boolean extjs_grid_store_userModel) {
-		this.extjs_grid_store_userModel = extjs_grid_store_userModel;
 	}
 
 	public boolean isExtjs_grid_createDelUpd_button() {
