@@ -17,6 +17,10 @@ public class Pager<T> {
 	// mybatis时候用的较多
 	protected Object params;// 具体的参数形式，可能是Map也可能是Bean
 	
+	
+	public void setParams(Map<String,Object> params){
+		this.params=params;
+	}
 	//protected List result = null;
 	//protected int total = -1;
 	/**
