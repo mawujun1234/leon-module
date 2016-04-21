@@ -329,6 +329,14 @@ public class Cnd implements PItem{
 		this.getWhere().andLike(name, value);
 		return this;
 	}
+	
+	public Cnd andLikeIf(String name, String value) {
+		if(value==null){
+			return this;
+		}
+		this.getWhere().andLike(name, value);
+		return this;
+	}
 
 	public Cnd andNotLike(String name, String value) {
 		this.getWhere().andNotLike(name, value);
