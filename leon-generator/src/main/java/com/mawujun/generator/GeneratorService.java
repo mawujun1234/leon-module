@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Properties;
 import java.util.Set;
 
 import com.mawujun.generator.model.FtlFileInfo;
@@ -37,9 +38,23 @@ public class GeneratorService {
 	private JavaEntityMetaDataService javaEntityMetaDataService=new JavaEntityMetaDataService();
 	private Configuration cfg=null;
 	List<FtlFileInfo> ftl_file_manes=new ArrayList<FtlFileInfo>();//ftl文件的名称
+	Properties properties=new Properties();
+	{
+		properties.put("classpathftldir", "/templates/default");
+		properties.put("outputDir", "d:/webapp-generator-output");
+		properties.put("nameStrategy", "com.mawujun.generator.other.DefaultNameStrategy");
+	}
 
 	//额外的配置选项
 	private ExtenConfig extenConfig;
+	
+	/**
+	 * 设置输出路径
+	 * @param output
+	 */
+	public void setOutputDir(String output){
+		properties.put("outputDir", output);
+	}
 	
 	public void initConfiguration() throws IOException{
 		// TODO Auto-generated method stub
@@ -63,8 +78,8 @@ public class GeneratorService {
 //		if(reses==null || reses.length==0){
 //			return ;
 //		}
-		String classpathftldir=PropertiesUtils.load("generator.properties").getProperty("classpathftldir");
-		List<File> files=FileUtils.findFiles(FileUtils.getCurrentClassPath(this)+classpathftldir, "*.ftl");
+		String classpathftldir=properties.getProperty("classpathftldir");//PropertiesUtils.load("generator.properties").getProperty("classpathftldir");
+		List<File> files=FileUtils.findFiles(FileUtils.getCurrentClassPath(this)+classpathftldir.substring(1), "*.ftl");
 		//这表明，没有编写自己的模板，这样的话就去找默认的模板，就是在jar中的模板
 		if(files==null || files.size()==0){
 			
@@ -252,7 +267,7 @@ public class GeneratorService {
 		}
 		
 		
-		String output=PropertiesUtils.load("generator.properties").getProperty("output");
+		String output=properties.getProperty("outputDir");//PropertiesUtils.load("generator.properties").getProperty("output");
 		FileUtils.createDir(output);
 
 		for (FtlFileInfo ftlFile : ftl_file_manes) {	
