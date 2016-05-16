@@ -277,13 +277,13 @@ public class CndTest  extends DbunitBaseRepositoryTest {
 	public void andLike() {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		Cnd cnd0=Cnd.select().andLike("firstName","E1");
-		assertEquals("from com.mawujun.repository.EntityTest WHERE LOWER(firstName) LIKE LOWER('%E1%')",cnd0.toHql(classMetadata));
+		assertEquals("from com.mawujun.repository.EntityTest WHERE firstName LIKE '%E1%'",cnd0.toHql(classMetadata));
 	}
 	@Test
 	public void andNotLike() {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		Cnd cnd0=Cnd.select().andNotLike("firstName","E1");
-		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT LOWER(firstName) LIKE LOWER('%E1%')",cnd0.toHql(classMetadata));
+		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT firstName LIKE '%E1%'",cnd0.toHql(classMetadata));
 	}
 	@Test
 	public void andLike_ignoreCase() {
@@ -432,13 +432,17 @@ public class CndTest  extends DbunitBaseRepositoryTest {
 	public void orLike() {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		Cnd cnd0=Cnd.select().andLike("firstName","E1").orLike("firstName","E1");
-		assertEquals("from com.mawujun.repository.EntityTest WHERE LOWER(firstName) LIKE LOWER('%E1%') OR LOWER(firstName) LIKE LOWER('%E1%')",cnd0.toHql(classMetadata));
+		assertEquals("from com.mawujun.repository.EntityTest WHERE firstName LIKE '%E1%' OR firstName LIKE '%E1%'",cnd0.toHql(classMetadata));
 	}
 	@Test
 	public void orNotLike() {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		Cnd cnd0=Cnd.select().andNotLike("firstName","E1").orNotLike("firstName","E1");
-		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT LOWER(firstName) LIKE LOWER('%E1%') OR  NOT LOWER(firstName) LIKE LOWER('%E1%')",cnd0.toHql(classMetadata));
+		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT firstName LIKE '%E1%' OR  NOT firstName LIKE '%E1%'",cnd0.toHql(classMetadata));
+		
+		Cnd cnd1=Cnd.select().andNotLike("firstName","E1",true).orNotLike("firstName","E1",true);
+		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT LOWER(firstName) LIKE LOWER('%E1%') OR  NOT LOWER(firstName) LIKE LOWER('%E1%')",cnd1.toHql(classMetadata));
+
 	}
 	@Test
 	public void orLike_ignoreCase() {

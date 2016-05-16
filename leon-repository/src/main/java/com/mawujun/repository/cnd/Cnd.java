@@ -326,7 +326,7 @@ public class Cnd implements PItem{
 	}
 
 	public Cnd andLike(String name, String value) {
-		this.getWhere().andLike(name, value);
+		this.getWhere().andLike(name, value,false);
 		return this;
 	}
 	
@@ -334,12 +334,12 @@ public class Cnd implements PItem{
 		if(value==null){
 			return this;
 		}
-		this.getWhere().andLike(name, value);
+		this.getWhere().andLike(name, value,false);
 		return this;
 	}
 
 	public Cnd andNotLike(String name, String value) {
-		this.getWhere().andNotLike(name, value);
+		this.getWhere().andNotLike(name, value,false);
 		return this;
 	}
 
@@ -435,12 +435,12 @@ public class Cnd implements PItem{
 	}
 
 	public Cnd orLike(String name, String value) {
-		this.getWhere().orLike(name,value);
+		this.getWhere().orLike(name,value,false);
 		return this;
 	}
 
 	public Cnd orNotLike(String name, String value) {
-		this.getWhere().orNotLike(name,value);
+		this.getWhere().orNotLike(name,value,false);
 		return this;
 	}
 

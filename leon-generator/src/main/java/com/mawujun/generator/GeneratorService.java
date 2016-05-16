@@ -13,6 +13,8 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.Set;
 
+import org.apache.commons.lang3.SystemUtils;
+
 import com.mawujun.generator.model.FtlFileInfo;
 import com.mawujun.generator.model.SubjectRoot;
 import com.mawujun.utils.file.FileUtils;
@@ -41,7 +43,12 @@ public class GeneratorService {
 	Properties properties=new Properties();
 	{
 		properties.put("classpathftldir", "/templates/default");
-		properties.put("outputDir", "d:/webapp-generator-output");
+		
+		if(SystemUtils.IS_OS_MAC){
+			properties.put("outputDir", "/opt/generate");
+		} else if(SystemUtils.IS_OS_WINDOWS){
+			properties.put("outputDir", "d:/webapp-generator-output");
+		}
 		properties.put("nameStrategy", "com.mawujun.generator.other.DefaultNameStrategy");
 	}
 
@@ -274,7 +281,13 @@ public class GeneratorService {
 			this.generatorFile(clazz,ftlFile,output);	
 		}
 		//打开文件夹
-		Runtime.getRuntime().exec("cmd.exe /c start "+output);
+		
+		if(SystemUtils.IS_OS_MAC){
+			Runtime.getRuntime().exec("/usr/bin/open "+output);
+		} else if(SystemUtils.IS_OS_WINDOWS){
+			Runtime.getRuntime().exec("cmd.exe /c start "+output);
+		}
+		
 	}
 	/**
 	 * 
