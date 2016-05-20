@@ -11,6 +11,7 @@ import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -91,8 +92,17 @@ public class JavaEntityMetaDataService {
 		root.setSimpleClassName(clazz.getSimpleName());
 		root.setClassName(clazz.getName());
 		root.setBasepackage(clazz.getPackage().getName());
-		root.setIdType("String");//默认是String
-		//root.setIdType(idClass.getSimpleName());
+		
+		IdClass idClassAnnotation=(IdClass)clazz.getAnnotation(IdClass.class);
+		if(idClassAnnotation!=null){
+			//idClassAnnotation.value().getTypeName();
+			root.setIdType(idClassAnnotation.value().getCanonicalName());
+		} else {
+			root.setIdType("String");//默认是String
+		}
+		
+		
+		//
 		
 		
 		Field[] fields=ReflectUtils.getAllDeclaredFields(clazz);
@@ -143,7 +153,7 @@ public class JavaEntityMetaDataService {
 			propertyColumn.setJavaType(field.getType());
 			propertyColumns.add(propertyColumn);
 			
-			//默认是使用id作为名称
+			//默认是使用id作为名称，这里只适合单个id的时候
 			if(id_name.equals(propertyColumn.getProperty())){
 				root.setIdType(field.getType().getSimpleName());
 			}

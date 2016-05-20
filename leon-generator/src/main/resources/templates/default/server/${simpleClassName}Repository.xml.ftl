@@ -37,7 +37,7 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
     </select> 
      <!-- 名称模式为：****_count,也可以不写，但如果查询叫复杂的话，自己写有助于控制查询性能-->
     <select id="queryPage_count" resultType="int" parameterType="map">
-    	select count(a.id)
+    	select count(a.*)
 		from ${tableName} a
     </select>
 </mapper>
