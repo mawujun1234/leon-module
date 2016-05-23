@@ -27,7 +27,7 @@ public class TestPK {
 		aa.extjs_grid_createDelUpd_button = true;
 		generatorService.setExtenConfig(aa);
 
-		generatorService.generatorAllFile(OrdSzrt.class);
+		generatorService.generatorAllFile(PKEntity.class);
 
 	}
 	

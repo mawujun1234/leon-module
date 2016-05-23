@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 
 import com.mawujun.generator.model.FieldDefine;
-import com.mawujun.pk.OrdSzrt.PK;
+import com.mawujun.pk.PKEntity.PK;
 
 
 /**
@@ -18,7 +18,7 @@ import com.mawujun.pk.OrdSzrt.PK;
  */
 @Entity(name="ord_ord_szrt")
 @IdClass(PK.class)
-public class OrdSzrt {
+public class PKEntity {
 	
 	@Id
 	@FieldDefine(title="订货批号",hidden=true)
@@ -59,8 +59,8 @@ public class OrdSzrt {
 	private Double szrate;
 	
 	
-	public OrdSzrt.PK geetPK(){
-		OrdSzrt.PK pk=new OrdSzrt.PK();
+	public PKEntity.PK geetPK(){
+		PKEntity.PK pk=new PKEntity.PK();
 		pk.setOrdorg(ordorg);
 		pk.setOrmtno(ormtno);
 		pk.setSizegp(sizegp);
