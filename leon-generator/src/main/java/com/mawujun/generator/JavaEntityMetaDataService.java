@@ -82,7 +82,8 @@ public class JavaEntityMetaDataService {
 			if(entityAnnotation!=null){
 				root.setTableName(entityAnnotation.name());
 			} else {
-				throw new RuntimeException("没有在实体类上添加@Entity注解");
+				//throw new RuntimeException("没有在实体类上添加@Entity注解");
+				root.setTableName(clazz.getName());
 			}
 		}
 		//root.setTableName(nameStrategy.classToTableName(clazz.getSimpleName().toLowerCase()));

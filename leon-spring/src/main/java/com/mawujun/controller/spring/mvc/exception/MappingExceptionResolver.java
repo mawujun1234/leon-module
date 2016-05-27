@@ -1,13 +1,26 @@
 package com.mawujun.controller.spring.mvc.exception;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mawujun.exception.BusinessException;
 
 public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
@@ -65,6 +78,69 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 //		//只有在ExceptionMappings没有定义过的时候才会走到这里
 //		return this.defaultErrorMsg;
 	}
+	
+	private ObjectMapper objectMapper;
+	public ObjectMapper getObjectMapper(){
+		if(objectMapper!=null){
+			return objectMapper;
+		}
+		SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder()
+	        .indentOutput(true)
+	        .dateFormat(simpleDateFormat);
+	        //.modulesToInstall(new ParameterNamesModule());
+		ObjectMapper mapper=builder.build();
+		mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true); //允许出现没有双引号的字段名称
+		mapper.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true) ;//允许出现单引�?
+		return mapper;
+	}
+	@Override
+	protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response,
+			Object handler, Exception ex) {
+		//如果是json的时候怎么办？
+		HandlerMethod handlerMethod = (HandlerMethod) handler;   
+		ResponseBody body = handlerMethod.getMethodAnnotation(ResponseBody.class);
+		if(body!=null){
+			//http://wenku.baidu.com/link?url=VU-cIAmVAqII8J4_jc96YlVV6IdlSJfhpGg0dUCx69mm6xsCx0CJtESW4nR5FQn7T3zRFS0bUAXodgwYq_I67nYBG4NZhATKAyAgGrEW3ki
+			response.setStatus(HttpStatus.OK.value());
+			// 设置ContentType    
+			response.setContentType(MediaType.APPLICATION_JSON_VALUE); 
+			// 避免乱码    
+			response.setCharacterEncoding("UTF-8");    
+			response.setHeader("Cache-Control", "no-cache, must-revalidate"); 
+			
+			try {
+				PrintWriter writer = response.getWriter();
+				Map<String,Object> map=new HashMap<String,Object>();
+				map.put("success", false);
+				map.put("msg", determineErrorMsg(null,ex));
+				//writer.write();    
+				getObjectMapper().writeValue(writer, map);
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}    
+			return new ModelAndView();
+		}
+
+		// Expose ModelAndView for chosen error view.
+		String viewName = determineViewName(ex, request);
+		if (viewName != null) {
+			// Apply HTTP status code for error views, if specified.
+			// Only apply it if we're processing a top-level request.
+			Integer statusCode = determineStatusCode(request, viewName);
+			if (statusCode != null) {
+				applyStatusCodeIfPossible(request, response, statusCode);
+			}
+			return getModelAndView(viewName, ex, request);
+		}
+		else {
+			return null;
+		}
+	}
+	
+
 	
 	@Override
 	protected ModelAndView getModelAndView(String viewName, Exception ex) {
