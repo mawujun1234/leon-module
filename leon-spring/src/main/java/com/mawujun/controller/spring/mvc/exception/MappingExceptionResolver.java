@@ -57,7 +57,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	 * @return
 	 */
 	protected String determineErrorMsg( String viewName, Exception ex) {
-		logger.info(ex);
+		
 		if(ex instanceof BusinessException){
 			return ((BusinessException)ex).getMessage();
 		} else if (this.errorMsgs.containsKey(ex.getClass())) {
@@ -97,6 +97,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	@Override
 	protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response,
 			Object handler, Exception ex) {
+		logger.info(ex);
 		//如果是json的时候怎么办？
 		HandlerMethod handlerMethod = (HandlerMethod) handler;   
 		ResponseBody body = handlerMethod.getMethodAnnotation(ResponseBody.class);
@@ -110,6 +111,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 			response.setHeader("Cache-Control", "no-cache, must-revalidate"); 
 			
 			try {
+
 				PrintWriter writer = response.getWriter();
 				Map<String,Object> map=new HashMap<String,Object>();
 				map.put("success", false);
