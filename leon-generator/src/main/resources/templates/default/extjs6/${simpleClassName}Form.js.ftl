@@ -147,16 +147,16 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Form'
 			editable:false,
 			forceSelection:true,
 		    displayField: 'name',
-		    valueField: 'key',
+		    valueField: 'id',
 		    store: {
-			    fields: ['key', 'name'],
+			    fields: ['id', 'name'],
 			    proxy: {
 			    	autoLoad:true,
 			        type: 'ajax',
 			        url: Ext.ContextPath+'/${propertyColumn.property}/query.do',
 			        reader: {
-			            type: 'json',
-			            rootProperty: '${propertyColumn.property}'
+			            type: 'json'
+			            //rootProperty: '${propertyColumn.property}'
 			        }
 			    }
 			},
