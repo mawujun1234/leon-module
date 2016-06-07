@@ -31,7 +31,7 @@ public class ShiroKickoutSessionControlFilter extends AccessControlFilter {
 
 	private String kickoutUrl; //踢出后到的地址
     private boolean kickoutAfter = false; //false=踢出之前登录的,之后登录的用户 默认踢出之前登录的用户
-    private int maxSession = 1; //同一个帐号最大会话数 默认1
+    private int maxSession = -1; //同一个帐号最大会话数 默认-1,表示无限制
 
     private SessionManager sessionManager;
     private Cache<String, Deque<Serializable>> cache;
@@ -88,7 +88,7 @@ public class ShiroKickoutSessionControlFilter extends AccessControlFilter {
 
         Serializable kickoutSessionId = null;
         //如果队列里的sessionId数超出最大会话数，开始踢人
-        while(deque.size() > maxSession) {
+        while(maxSession!=-1 && deque.size() > maxSession) {
             if(kickoutAfter) { //如果踢出后者
                 kickoutSessionId = deque.removeFirst();
             } else { //否则踢出前者
