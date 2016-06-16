@@ -53,9 +53,9 @@ public class ${simpleClassName}Controller {
 	 */
 	@RequestMapping("/${simpleClassNameFirstLower}/queryPager.do")
 	@ResponseBody
-	public PageResult<${simpleClassName}> queryPager(Integer start,Integer limit,String sampleName){
-		PageParam page=PageParam.getInstance(start,limit);//.addParam(M.${simpleClassName}.sampleName, "%"+sampleName+"%");
-		return ${simpleClassNameFirstLower}Service.queryPage(page);
+	public Pager<${simpleClassName}> queryPager(Pager<${simpleClassName}> pager){
+		
+		return ${simpleClassNameFirstLower}Service.queryPage(pager);
 	}
 	</#if>
 
