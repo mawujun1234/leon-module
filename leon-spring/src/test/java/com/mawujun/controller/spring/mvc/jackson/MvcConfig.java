@@ -1,5 +1,6 @@
 package com.mawujun.controller.spring.mvc.jackson;
 
+import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
@@ -15,6 +16,7 @@ import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Controller;
@@ -70,6 +72,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 	@Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.add(new MappingJackson2HttpMessageConverter(getObjectMapper()));
+        //主要用于注解了@ResponseBody的方法，并且直接返回String的Controller方法，return "{success:true}"; 
+        converters.add(new StringHttpMessageConverter(Charset.forName("UTF-8")));
     }
 	
 	@Override
