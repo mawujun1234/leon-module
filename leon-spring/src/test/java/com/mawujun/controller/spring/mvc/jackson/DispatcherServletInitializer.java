@@ -17,14 +17,32 @@
 package com.mawujun.controller.spring.mvc.jackson;
 
 import javax.servlet.Filter;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
 
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-
+/**
+ * 这个类，默认就只是加载spring的DispatchServlet
+ * http://hanqunfeng.iteye.com/blog/2114967
+ * @author mawujun qq:16064988 mawujun1234@163.com
+ *
+ */
 public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
-
+	/**
+	 * 添加自定义的Servlet
+	 */
+	@Override
+	public void onStartup(ServletContext servletContext) throws ServletException {
+		super.onStartup(servletContext);
+//		//registerDispatcherServlet(servletContext);
+//		StatViewServlet statViewServlet=new StatViewServlet();
+//		ServletRegistration.Dynamic dynamic = servletContext.addServlet("DruidStatView", statViewServlet);  
+//        dynamic.setLoadOnStartup(2);  
+//        dynamic.addMapping("/druid/*");
+	}
 	/**
 	 * 加载service层的application
 	 */
@@ -34,11 +52,18 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 		return null;
 	}
 
+	/**
+	 * 设置spring相关配置的Config类
+	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
 		return new Class<?>[] { MvcConfig.class};
+		//return new Class<?>[] { MvcConfig.class ,RepositoryConfig.class,ShiroConfig.class};
 	}
 
+	/**
+	 * 获取spring的DispatchServlet拦截哪些url
+	 */
 	@Override
 	protected String[] getServletMappings() {
 		//System.out.println("-------------------------");
@@ -59,6 +84,9 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
     }
 
 
+	/**
+	 * 为DispatchServlet类设置额外的参数
+	 */
 	@Override
 	protected void customizeRegistration(Dynamic registration) {
 		registration.setInitParameter("dispatchOptionsRequest", "true");

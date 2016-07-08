@@ -112,13 +112,15 @@ public abstract class AbstractService<T, ID extends Serializable> {
 		return this.getRepository().deleteBatch(IDS);
 	}
 	
-	
+	@Transactional(readOnly=true)
 	public int queryCount(Cnd cnd) {
 		return this.getRepository().queryCount(cnd);
 	}
+	@Transactional(readOnly=true)
 	public Object queryMax(String property,Cnd cnd) {
 		return this.getRepository().queryMax(property, cnd);
 	}
+	@Transactional(readOnly=true)
 	public Object queryMin(String property,Cnd cnd) {
 		return this.getRepository().queryMin(property, cnd);
 	}
@@ -128,16 +130,18 @@ public abstract class AbstractService<T, ID extends Serializable> {
 	 * @param whereInfos
 	 * @return
 	 */
+	@Transactional(readOnly=true)
 	public T queryUnique(Cnd cnd) {
 		return this.getRepository().queryUnique(cnd);
 	}
 	public <M> M queryUnique(Cnd cnd,Class<M> classM) {
 		return this.getRepository().queryUnique(cnd, classM);
 	}
-	
+	@Transactional(readOnly=true)
 	public List<T> queryAll() {
 		return this.getRepository().queryAll();
 	}
+	@Transactional(readOnly=true)
 	public List<T> query(Cnd cnd) {
 		return this.getRepository().query(cnd);
 	}
@@ -153,6 +157,7 @@ public abstract class AbstractService<T, ID extends Serializable> {
 	 * @param page
 	 * @return
 	 */
+	@Transactional(readOnly=true)
 	public Pager<T> queryPage(Pager<T> pager) {
 		return this.getRepository().queryPage(pager);
 	}
