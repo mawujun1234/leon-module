@@ -38,7 +38,7 @@
 		<org.hibernate.version>5.1.0.Final</org.hibernate.version>
 		<org.hibernate-validator.version>5.2.4.Final</org.hibernate-validator.version>
 		<javax.el.version>2.2.4</javax.el.version>
-		<org.hibernate.javax.persistence.version>1.0.1.Final</org.hibernate.javax.persistence.version>
+		<org.hibernate.javax.persistence.version>1.0.0.Final</org.hibernate.javax.persistence.version>
 		<org.mybatis.version>3.3.1</org.mybatis.version>
 		<org.mybatis-spring.version>1.2.4</org.mybatis-spring.version>
 		<net.sf.ehcache.version>2.10.0</net.sf.ehcache.version>

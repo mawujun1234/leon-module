@@ -19,7 +19,11 @@
 
 	<dependencies>
 		<!-- ======================================持久层=========================================================== -->
-		
+		<!--<dependency>
+		    <groupId>org.hibernate.javax.persistence</groupId>
+		    <artifactId>hibernate-jpa-2.1-api</artifactId>
+		    <version>${org.hibernate.javax.persistence.version}</version>
+		</dependency>-->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
@@ -47,8 +51,6 @@
 			<version>${javax.el.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- <dependency> <groupId>org.hibernate.javax.persistence</groupId> <artifactId>hibernate-jpa-2.0-api</artifactId> 
-			<version>${org.hibernate.javax.persistence.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
