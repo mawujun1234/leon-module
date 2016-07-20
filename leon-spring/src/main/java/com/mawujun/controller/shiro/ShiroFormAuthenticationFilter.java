@@ -37,7 +37,7 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
     	String jsonpCallback=request.getParameter("jsonpCallback");
 		if(jsonpCallback!=null){
 			WebUtils.toHttp(response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-			response.getWriter().write(jsonpCallback+"({\"success\":false,\"errorMsg\":\"请先登录!\"})");
+			response.getWriter().write(jsonpCallback+"({\"success\":false,\"errorMsg\":\"请先登录!\",\"errorCode\":\"nologin\"})");
     		response.getWriter().close();
 		} else {
 			//String unauthorizedUrl = getUnauthorizedUrl();
@@ -46,12 +46,13 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
         	if(accept!=null && accept.indexOf("application/json")!=-1){
         		WebUtils.toHttp(response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         		response.setContentType(accept);
-        		response.getWriter().write("({\"success\":false,\"errorMsg\":\"请先登录!\"})");
+        		response.getWriter().write("({\"success\":false,\"errorMsg\":\"请先登录!\",\"errorCode\":\"nologin\"})");
         		//response.getWriter().write("{\"success\":false,\"reasons\":{\"code\":\"noPermission\"},\"root\":\""+unauthorizedUrl+"\"}");
             	response.getWriter().close();
         	} else {
         		String loginUrl = getLoginUrl();
         		WebUtils.toHttp(response).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        		//WebUtils.issueRedirect(request, response, request.getServletContext().getContextPath()+loginUrl);
         		WebUtils.issueRedirect(request, response, loginUrl);
               
         	}
