@@ -97,6 +97,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	@Override
 	protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response,
 			Object handler, Exception ex) {
+		ex.printStackTrace();
 		logger.error(ex);
 		//如果是json的时候怎么办？
 		HandlerMethod handlerMethod = (HandlerMethod) handler;   
