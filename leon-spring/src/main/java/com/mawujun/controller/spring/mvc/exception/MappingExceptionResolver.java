@@ -118,6 +118,9 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 				Map<String,Object> map=new HashMap<String,Object>();
 				map.put("success", false);
 				map.put("msg", determineErrorMsg(null,ex));
+				if(ex instanceof BusinessException){
+					map.put("errorCode", ((BusinessException)ex).getErrorCode());
+				}
 				//writer.write();    
 				getObjectMapper().writeValue(writer, map);
 				writer.close();
