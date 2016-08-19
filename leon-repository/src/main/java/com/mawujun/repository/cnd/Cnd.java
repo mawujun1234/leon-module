@@ -251,7 +251,7 @@ public class Cnd implements PItem{
 	 * @return
 	 */
 	public Cnd andEqualsIf(String name, Object val) {
-		if (null == val)
+		if (null == val || "".equals(val))
 			return this;
 		this.getWhere().andEquals(name, val);
 		return this;
