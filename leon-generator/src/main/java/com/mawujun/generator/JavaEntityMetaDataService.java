@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -111,6 +112,9 @@ public class JavaEntityMetaDataService {
 		//存放需要产生查询条件的属性
 		List<PropertyColumn> queryProperties =new ArrayList<PropertyColumn>();
 		for(Field field:fields){
+			if(Modifier.isFinal(field.getModifiers())){
+				continue;
+			}
 			PropertyColumn propertyColumn=new PropertyColumn();
 			propertyColumn.setProperty(field.getName());
 			FieldDefine fieldDefine=field.getAnnotation(FieldDefine.class);
@@ -139,6 +143,8 @@ public class JavaEntityMetaDataService {
 					}
 				}
 				propertyColumn.setGenQuery(fieldDefine.genQuery());
+			} else {
+				propertyColumn.setProperty_label(propertyColumn.getProperty());
 			}
 			//不准为空的判断
 			Column column=field.getAnnotation(Column.class);
