@@ -175,10 +175,10 @@ public abstract class BeanUtils {
 	 * @param toType 转换目标类型.
 	 */
 	public static <T> T convert(String value, Class<T> toType) {
-		//如果类型相同，就不转换了
-		if(toType==String.class){
-			return (T)value;
-		}
+//		//如果类型相同，就不转换了
+//		if(toType==String.class){
+//			return (T)value;
+//		}
 		try {
 			return (T)ConvertUtils.convert(value, toType);
 		} catch (Exception e) {
@@ -187,10 +187,10 @@ public abstract class BeanUtils {
 	}
 	
 	public static <T> T convert(Object value, Class<T> toType) {
-		//如果类型相同，就不转换了
-		if(value.getClass()==toType){
-			return (T)value;
-		}
+//		//如果类型相同，就不转换了
+//		if(value.getClass()==toType){
+//			return (T)value;
+//		}
 		
 		
 		try {
