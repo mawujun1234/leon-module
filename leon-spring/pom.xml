@@ -5,11 +5,11 @@
   <parent>
     <groupId>com.mawujun</groupId>
     <artifactId>leon-module</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>leon-spring</artifactId>
 
-  <name>leon-spring</name>
+  <name>${project.artifactId}</name>
   <url>http://maven.apache.org</url>
 
   <properties>

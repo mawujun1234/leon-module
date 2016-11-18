@@ -5,12 +5,11 @@
   <parent>
     <groupId>com.mawujun</groupId>
     <artifactId>leon-module</artifactId>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>com.mawujun</groupId>
   <artifactId>leon-util</artifactId>
-  <version>1.0</version>
-  <name>leon-util</name>
+  <name>${project.artifactId}</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
