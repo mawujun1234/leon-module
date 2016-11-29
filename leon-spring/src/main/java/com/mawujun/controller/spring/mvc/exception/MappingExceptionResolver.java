@@ -98,14 +98,16 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	@Override
 	protected ModelAndView doResolveException(HttpServletRequest request, HttpServletResponse response,
 			Object handler, Exception ex) {
-		ex.printStackTrace();
+		//ex.printStackTrace();
 		logger.error(ex);
 		//如果是json的时候怎么办？
 		HandlerMethod handlerMethod = (HandlerMethod) handler;   
 		ResponseBody body = handlerMethod.getMethodAnnotation(ResponseBody.class);
 		if(body!=null){
 			//http://wenku.baidu.com/link?url=VU-cIAmVAqII8J4_jc96YlVV6IdlSJfhpGg0dUCx69mm6xsCx0CJtESW4nR5FQn7T3zRFS0bUAXodgwYq_I67nYBG4NZhATKAyAgGrEW3ki
-			response.setStatus(HttpStatus.OK.value());
+			//response.setStatus(HttpStatus.OK.value());
+			response.setStatus(HttpStatus.SERVICE_UNAVAILABLE.value());
+			
 			// 设置ContentType    
 			response.setContentType(MediaType.APPLICATION_JSON_VALUE); 
 			// 避免乱码    
