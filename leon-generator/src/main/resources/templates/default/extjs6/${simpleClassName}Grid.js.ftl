@@ -359,6 +359,12 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
 		                </#list>
 	                });
             		grid.getStore().reload();
+            		
+            		var grid=btn.up("grid");
+					
+					var params=grid.getParams();
+					grid.getStore().getProxy().extraParams=params;
+					grid.getStore().reload();
             	}
             }
 	  	]
@@ -422,6 +428,30 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
 	  </#if>
        
       me.callParent();
+	},
+	getParams:function(){
+		var grid=this;//Ext.getCmp("sampleDesignGrid");
+		var toolbars=grid.getDockedItems('toolbar[dock="top"]');
+
+    	var params={
+    		//"params['ormtno']":toolbars[0].down("#ordmtcombo").getValue(),
+    	<#list queryProperties as propertyColumn>
+	    <#if propertyColumn.jsType=='date'>
+	    	"params['${propertyColumn.property}_start']": Ext.Date.format(grid.down("#${propertyColumn.property}_start").getValue(),'Y-m-d H:i:s'),
+	        "params['${propertyColumn.property}_end']": Ext.Date.format(grid.down("#${propertyColumn.property}_end").getValue(),'Y-m-d H:i:s')<#if propertyColumn_has_next>,</#if>
+			<#elseif propertyColumn.jsType=='bool'>
+			"params['${propertyColumn.property}']":grid.down("#${propertyColumn.property}").getValue()<#if propertyColumn_has_next>,</#if>
+			<#elseif propertyColumn.jsType=='int' >
+			"params['${propertyColumn.property}']":grid.down("#${propertyColumn.property}").getValue()<#if propertyColumn_has_next>,</#if>
+			<#elseif propertyColumn.jsType=='float'>
+			"params['${propertyColumn.property}']":grid.down("#${propertyColumn.property}").getValue()<#if propertyColumn_has_next>,</#if>
+			<#else>
+			"params['${propertyColumn.property}']":grid.down("#${propertyColumn.property}").getValue()<#if propertyColumn_has_next>,</#if>
+		</#if>
+		</#list>
+    					
+    	};
+    	return params;
 	},
 	<#if extenConfig.extjs_grid_createDelUpd_button=true>
 	onCreate:function(){
