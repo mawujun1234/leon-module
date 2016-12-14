@@ -12,7 +12,22 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 <mapper namespace="<@namespace/>.${simpleClassName}Repository">
 	<!-- 查询语句，会自动分页-->
 	<sql id="queryPage_where">
-		
+	<#list queryProperties as propertyColumn>
+		<where>
+		<#if propertyColumn.jsType=='date'>
+		<if test="${propertyColumn.property}_start!=null and ${propertyColumn.property}_start!=''">
+    	 	and a.${propertyColumn.property} &gt= <@mapperEl value="${propertyColumn.property}"/>
+    	</if>
+    	<if test="${propertyColumn.property}_end!=null and ${propertyColumn.property}_end!=''">
+    	 	and a.${propertyColumn.property} &lt= <@mapperEl value="${propertyColumn.property}"/>
+    	</if>
+		<#else>
+		<if test="${propertyColumn.property}!=null and ${propertyColumn.property}!=''">
+    	 	and a.${propertyColumn.property} = <@mapperEl value="${propertyColumn.property}"/>
+    	</if>
+		</#if>
+		</where>
+	</#list>
 	</sql>
     <select id="queryPage" resultType="${className}" parameterType="map">
     	select * from ${tableName}
