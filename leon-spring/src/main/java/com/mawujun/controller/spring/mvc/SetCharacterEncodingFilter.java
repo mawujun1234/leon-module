@@ -27,7 +27,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import com.mawujun.controller.spring.mvc.json.JsonConfigHolder;
+//import com.mawujun.controller.spring.mvc.json.JsonConfigHolder;
 
 
 /**
@@ -126,17 +126,17 @@ public class SetCharacterEncodingFilter implements Filter {
                 response.setCharacterEncoding(encoding);
             }
         }
-        //判断是不是jsonp，以jquery的格式为demo
-        if(request.getParameter(callback)!=null && !"".equals(request.getParameter(callback).trim())){
-        	//设置jsonp的函数名称
-        	JsonConfigHolder.setJsonpCallback(request.getParameter(callback));
-        }
+//        //判断是不是jsonp，以jquery的格式为demo
+//        if(request.getParameter(callback)!=null && !"".equals(request.getParameter(callback).trim())){
+//        	//设置jsonp的函数名称
+//        	JsonConfigHolder.setJsonpCallback(request.getParameter(callback));
+//        }
 
 	// Pass control on to the next filter
         chain.doFilter(request, response);
 
         //取消掉ThreadLocal中的数据
-        JsonConfigHolder.remove();
+        //JsonConfigHolder.remove();
     }
 
 
