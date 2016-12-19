@@ -9,11 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.mawujun.controller.spring.mvc.json.JsonConfigHolder;
 import com.mawujun.repository.cnd.Cnd;
 import com.mawujun.utils.M;
-import com.mawujun.utils.page.PageParam;
-import com.mawujun.utils.page.PageResult;
+
 
 import ${basepackage}.${simpleClassName};
 import ${basepackage}.${simpleClassName}Service;
