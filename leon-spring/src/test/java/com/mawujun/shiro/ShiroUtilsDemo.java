@@ -4,7 +4,7 @@ import org.apache.shiro.SecurityUtils;
 
 import com.mawujun.exception.BusinessException;
 
-public class ShiroUtils {
+public class ShiroUtilsDemo {
 //	/**
 //	 * 获取用户的登陆名
 //	 * @return

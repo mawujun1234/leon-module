@@ -75,6 +75,11 @@
 			<version>${com.fasterxml.jackson.core.version}</version>
 		</dependency>
 		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-annotations</artifactId>
+		    <version>${com.fasterxml.jackson.core.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
 			<version>${com.fasterxml.jackson.core.version}</version>
@@ -84,6 +89,8 @@
 			<artifactId>jackson-module-parameter-names</artifactId>
 			<version>${com.fasterxml.jackson.core.version}</version>
 		</dependency>
+		
+
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
