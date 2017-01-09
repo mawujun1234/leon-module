@@ -13,7 +13,16 @@ import freemarker.template.TemplateException;
 public class GeneratorCode {
 	static GeneratorService generatorService=new GeneratorService();
 
-	public static void main(String[] args) throws TemplateException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {	
+	public static void main(String[] args)
+			throws TemplateException, IOException, ClassNotFoundException, NoSuchMethodException, SecurityException,
+			IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+
+		// 基本配置
+		////设置输出目录
+		// generatorService.setOutputDir("");
+		////设置模板文件目录
+		// generatorService.setFtlDir();
+		// generatorService.setNameStrategy(nameStrategy);
 
 		// 这里弄成更加好用的方式，弄成级联的方式，例如getExtjsConfig.set。。。
 		ExtenConfig aa = new ExtenConfig();

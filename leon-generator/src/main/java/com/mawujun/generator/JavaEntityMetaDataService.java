@@ -21,6 +21,7 @@ import com.mawujun.generator.model.PropertyColumn;
 import com.mawujun.generator.model.PropertyColumnComparator;
 import com.mawujun.generator.model.ShowType;
 import com.mawujun.generator.model.SubjectRoot;
+import com.mawujun.generator.other.DefaultNameStrategy;
 import com.mawujun.generator.other.NameStrategy;
 import com.mawujun.utils.ReflectUtils;
 import com.mawujun.utils.properties.PropertiesUtils;
@@ -41,17 +42,10 @@ public class JavaEntityMetaDataService {
 	public JavaEntityMetaDataService() {
 		
 		try {
-			PropertiesUtils aa = PropertiesUtils.load("generator.properties");
-			String className=aa.getProperty("nameStrategy");
-			Class clazz=Class.forName(className);
-			nameStrategy=(NameStrategy) clazz.newInstance();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			throw new RuntimeException(e);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//PropertiesUtils aa = PropertiesUtils.load("generator.properties");
+			//String className=aa.getProperty("nameStrategy");
+			//Class clazz=Class.forName(className);
+			nameStrategy=(NameStrategy) DefaultNameStrategy.class.newInstance();
 		} catch (InstantiationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -178,6 +172,12 @@ public class JavaEntityMetaDataService {
 		root.setQueryProperties(queryProperties);
 		cache.put(clazz.getName(), root);
 		return root;
+	}
+	public NameStrategy getNameStrategy() {
+		return nameStrategy;
+	}
+	public void setNameStrategy(NameStrategy nameStrategy) {
+		this.nameStrategy = nameStrategy;
 	}
 	
 

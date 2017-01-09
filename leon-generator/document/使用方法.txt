@@ -1,0 +1,11 @@
+
+使用方法:
+1:在maven中添加依赖。leon-generator
+2：在项目中新建GeneratorCode和GeneratorM类。可以拷贝src/test/java的代码
+3：执行就可以了。
+
+
+额外的：
+1：如果有自定义的模板，那就在src/main/resource中建立对应目录的ftl的模板文件。例如/templete/newftl/aa.ftl
+2：然后在generatorService.setFtlDir("/templete/newftl");或generatorService.setFtlDir("/templete");指定ftl文件所在的父目录就可以了，使用的相对路径
+	

@@ -17,8 +17,9 @@ import org.apache.commons.lang3.SystemUtils;
 
 import com.mawujun.generator.model.FtlFileInfo;
 import com.mawujun.generator.model.SubjectRoot;
+import com.mawujun.generator.other.NameStrategy;
+import com.mawujun.generator.other.OperatorJAR;
 import com.mawujun.utils.file.FileUtils;
-import com.mawujun.utils.properties.PropertiesUtils;
 import com.mawujun.utils.string.StringUtils;
 
 import freemarker.cache.FileTemplateLoader;
@@ -42,7 +43,7 @@ public class GeneratorService {
 	List<FtlFileInfo> ftl_file_manes=new ArrayList<FtlFileInfo>();//ftl文件的名称
 	Properties properties=new Properties();
 	{
-		properties.put("classpathftldir", "/templates/default");
+		properties.put("classpathftldir", "/templates/default");//一定要使用相对目录
 		
 		if(SystemUtils.IS_OS_MAC){
 			properties.put("outputDir", "/opt/generate");
@@ -50,19 +51,48 @@ public class GeneratorService {
 			properties.put("outputDir", "d:/webapp-generator-output");
 		}
 		properties.put("nameStrategy", "com.mawujun.generator.other.DefaultNameStrategy");
+		
 	}
 
+	private boolean ftl_is_default=true;//标识ftl文件是不是使用默认的
 	//额外的配置选项
 	private ExtenConfig extenConfig;
 	
 	/**
-	 * 设置输出路径
+	 * 设置输出路径，使用绝对路径
 	 * @param output
 	 */
 	public void setOutputDir(String output){
 		properties.put("outputDir", output);
 	}
+	/**
+	 * 设置模板文件所在的目录，使用相对目录，相对于项目的根目录
+	 * 首先都会在本地目录中查找，如果本地目录没有的话，就会去jar目录中查找对应的
+	 * 一定要使用相对目录,例如/templates/default
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param classpathftldir
+	 */
+	public void setFtlDir(String classpathftldir){
+		ftl_is_default=false;
+		properties.put("classpathftldir", classpathftldir);
+	}
+	/**
+	 * 领域模型的字段名字变成列名时的映射规则，还有表名
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param nameStrategy
+	 * @throws IllegalAccessException 
+	 * @throws InstantiationException 
+	 */
+	public void setNameStrategy(Class<? extends NameStrategy> nameStrategy) throws InstantiationException, IllegalAccessException{
+		properties.put("nameStrategy", nameStrategy);
+		javaEntityMetaDataService.setNameStrategy((NameStrategy)nameStrategy.newInstance());
+	}
 	
+	/**
+	 * 从指定目录中读取ftl文件的时候
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @throws IOException
+	 */
 	public void initConfiguration() throws IOException{
 		// TODO Auto-generated method stub
 		if(cfg!=null){
@@ -85,7 +115,7 @@ public class GeneratorService {
 //		if(reses==null || reses.length==0){
 //			return ;
 //		}
-		String classpathftldir=properties.getProperty("classpathftldir");//PropertiesUtils.load("generator.properties").getProperty("classpathftldir");
+		String classpathftldir=properties.getProperty("classpathftldir");
 		List<File> files=FileUtils.findFiles(FileUtils.getCurrentClassPath(this)+classpathftldir.substring(1), "*.ftl");
 		//这表明，没有编写自己的模板，这样的话就去找默认的模板，就是在jar中的模板
 		if(files==null || files.size()==0){
@@ -98,16 +128,14 @@ public class GeneratorService {
 			files=FileUtils.findFiles(path, "*.ftl");
 			
 			//如果是直接依赖于leon-generator.jar,而没有leon-generator这个项目存在的时候，要先获取到ftl文件所在的jar，然后通过
-			//JarFileSearch专门搜索这个jar中的ftl文件，然后读取出来，然后再写到当前项目的classpath中，加上classpathftldir的前缀
-			//然后再把这些模板文件读取出来，用来生成代码。
-			
-			
-//			
-//			String dir=FileUtils.getCurrentClassPath(this)+"../lib";
-//			ArrayList<InputStream> list=new ArrayList<InputStream>();
-//			JarFileSearch.searchFtl(dir, list);
-			
-	 
+			//如果不是开发在开发环境中的话，就从jar文件中获取ftl内容
+			if(files==null || files.size()==0){
+				//返回的路劲格式如下：C:/ResourceJar.jar!/resource/res.txt,所以需要使用!进行分割，然后取前面一部分
+				String jarpath=this.getClass().getResource("").getPath().toString().split("!")[0];
+				//去掉file:\ 这个开头
+				jarpath=jarpath.substring(5);
+				files=OperatorJAR.readJARList(jarpath,classpathftldir);
+			}
 		}
 		//ftl_file_manes=files;
 		cfg = new Configuration();
@@ -147,82 +175,74 @@ public class GeneratorService {
 		
 		
 	}
-	
-//	/**
-//	 * 
-//	 * @param clazz 要
-//	 * @param ftl 模板文件在的地方
-//	 * @throws ClassNotFoundException 
-//	 * @throws TemplateException
-//	 * @throws IOException
-//	 */
-//	public  String generatorToString(String className,String ftl,Object extenConfig) throws ClassNotFoundException, TemplateException, IOException  {
-//		Class clazz=Class.forName(className);
-//		return generatorToString(clazz, ftl,extenConfig);
-//	}
-//	/**
-//	 * jsPackagel，默认是class的Leon.uncapitalize(simpleClassName)
-//	 * @author mawujun email:16064988@163.com qq:16064988
-//	 * @param clazz
-//	 * @param ftl
-//	 * @param 
-//	 * @return
-//	 * @throws TemplateException
-//	 * @throws IOException
-//	 */
-//	public  String generatorToString(Class clazz,String ftl,Object extenConfig) throws TemplateException, IOException {
-//		if(!StringUtils.hasLength(ftl)) {
-//			throw new NullArgumentException("模板文件名称不能为null");
-//		}
-//
-//		//String basePath=System.getProperty("user.dir")+"\\autoCoder\\templates\\";
-//		initConfiguration();
-//
-//		/* 在整个应用的生命周期中，这个工作你可以执行多次 */
-//		/* 获取或创建模板 */
-//		Template templete = cfg.getTemplate(ftl,"UTF-8");
-//		//templete.setEncoding("UTF-8");
-//		//templete.setOutputEncoding("UTF-8");
-//		/* 创建数据模型 */
-//		SubjectRoot root =javaEntityMetaDataService.prepareDate(clazz);
-//		if(extenConfig!=null){
-//			root.setExtenConfig(extenConfig);
-//		}
-//		
-//		
-//		
-//		/* 将模板和数据模型合并 */
-//		//Writer out = new OutputStreamWriter(System.out);
-//		Writer out = new StringWriter();
-//
-//		templete.process(root, out);
-//		out.flush();
-//		return out.toString();
-//	}
-//	private String getJsPackage(Class clazz){
-//		return "Leon."+StringUtils.uncapitalize(clazz.getSimpleName());
-//	}
 
-//	
 //	/**
+//	 * 从jar的文件夹中读取模板文件
 //	 * 
-//	 * @author mawujun 16064988@qq.com 
-//	 * @param className 领域类
-//	 * @param ftl 模板文件
-//	 * @param extenConfig 扩展的属性
-//	 * @param writer 要输出的对象，可以使控制面板，文件
-//	 * @throws ClassNotFoundException
-//	 * @throws TemplateException
+//	 * @author mawujun qq:16064988 mawujun1234@163.com
 //	 * @throws IOException
 //	 */
-//	public  void generator(String className,String ftl,Writer writer) throws ClassNotFoundException, TemplateException, IOException  {
-//		Class clazz=Class.forName(className);
-//		generator(clazz,ftl, writer);
+//	public void initConfiguration_default() throws IOException {
+//		// TODO Auto-generated method stub
+//		if (cfg != null) {
+//			return;
+//		}
+//
+//		String classpathftldir = properties.getProperty("classpathftldir");
+//		//获取目录下面的
+//		List<File> files = FileUtils.findFiles(FileUtils.getCurrentClassPath(this) + classpathftldir.substring(1),"*.ftl");
+//		// 这表明，没有编写自己的模板，这样的话就去找默认的模板，就是在jar中的模板
+//		if (files == null || files.size() == 0) {
+//			// 因为是开发环境，leon-generator是直接存在的，所以直接到leon-generator中获取默认的模板文件了
+//			// http://blog.csdn.net/zyj8170/article/details/5599988
+//			String path = GeneratorService.class.getProtectionDomain().getCodeSource().getLocation().getFile()+ classpathftldir;
+//			files = FileUtils.findFiles(path, "*.ftl");
+//
+//			// 如果是直接依赖于leon-generator.jar,而没有leon-generator这个项目存在的时候，要先获取到ftl文件所在的jar，然后通过
+//			// JarFileSearch专门搜索这个jar中的ftl文件，然后读取出来，然后再写到当前项目的classpath中，加上classpathftldir的前缀
+//			// 然后再把这些模板文件读取出来，用来生成代码。
+//
+//			//
+//			// String dir=FileUtils.getCurrentClassPath(this)+"../lib";
+//			// ArrayList<InputStream> list=new ArrayList<InputStream>();
+//			// JarFileSearch.searchFtl(dir, list);
+//
+//		}
+//		// ftl_file_manes=files;
+//		cfg = new Configuration();
+//		cfg.setEncoding(Locale.CHINA, "UTF-8");
+//		// cfg.setEncoding(Locale.CHINA, "UTF-8");
+//
+//		// 循环出 所有包含ftl的文件夹
+//		Set<String> list = new HashSet<String>();
+//		List<TemplateLoader> templateLoaders = new ArrayList<TemplateLoader>();
+//		for (File file : files) {
+//			// System.out.println(res.getURI().getPath());
+//			// System.out.println(res.getURL().getPath());
+//			// String
+//			// path=file.getAbsolutePath().substring(0,file.getAbsolutePath().lastIndexOf('/'));//SystemUtils.FILE_SEPARATOR
+//			String path = file.getParent();
+//			if (!list.contains(path)) {
+//				list.add(path);
+//				FileTemplateLoader ftl1 = new FileTemplateLoader(new File(path));
+//				templateLoaders.add(ftl1);
+//			}
+//			// ftl_file_manes.add(file.getName());
+//
+//			FtlFileInfo ftlFileInfo = new FtlFileInfo();
+//			ftlFileInfo.setName(file.getName());
+//			ftlFileInfo.setParentpath(file.getParent());
+//			ftl_file_manes.add(ftlFileInfo);
+//
+//		}
+//
+//
+//		MultiTemplateLoader mtl = new MultiTemplateLoader(templateLoaders.toArray(new TemplateLoader[templateLoaders.size()]));
+//		cfg.setTemplateLoader(mtl);
+//		cfg.setObjectWrapper(new DefaultObjectWrapper());
 //	}
 	
-//	public  void generator(String className,String ftl,Map extenConfig,Writer writer) throws ClassNotFoundException, TemplateException, IOException  {
-//		
-//	}
+
 	/**
 	 * 根据字符串产生名称
 	 * @param clazz
@@ -315,7 +335,7 @@ public class GeneratorService {
 		
 		String fileName=this.generatorFileName(clazz, ftlfile.getName());
 		//按照模板的目录结构生成
-		String classpathftldir=PropertiesUtils.load("generator.properties").getProperty("classpathftldir");
+		String classpathftldir=properties.getProperty("classpathftldir");////PropertiesUtils.load("generator.properties").getProperty("classpathftldir");
 		String parentpath=ftlfile.getParentpath();
 		
 		parentpath=parentpath.replaceAll("\\\\", "/");
@@ -367,6 +387,7 @@ public class GeneratorService {
 		/* 在整个应用的生命周期中，这个工作你可以执行多次 */
 		/* 获取或创建模板 */
 		Template templete = cfg.getTemplate(ftl,"UTF-8");
+		
 		//templete.setEncoding("UTF-8");
 		//templete.setOutputEncoding("UTF-8");
 		/* 创建数据模型 */
