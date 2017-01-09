@@ -301,7 +301,7 @@ public class GeneratorService {
 			this.generatorFile(clazz,ftlFile,output);	
 		}
 		//打开文件夹
-		
+		System.out.println("输出目录为："+output);
 		if(SystemUtils.IS_OS_MAC){
 			Runtime.getRuntime().exec("/usr/bin/open "+output);
 		} else if(SystemUtils.IS_OS_WINDOWS){
