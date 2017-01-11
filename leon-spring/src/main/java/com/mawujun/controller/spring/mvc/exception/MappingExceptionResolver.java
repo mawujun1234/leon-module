@@ -27,7 +27,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	
 	private static Logger logger=LogManager.getLogger(MappingExceptionResolver.class);
 	
-	private String errorMsgAttribute = "errorMsg";//异常消息的属性名称，可以自定义,也就是对异常进行文字化描述，而不是其他信息
+	private String errorMsgAttribute = "msg";//异常消息的属性名称，可以自定义,也就是对异常进行文字化描述，而不是其他信息
 	private String defaultErrorMsg="系统异常，请稍候重试!如果多次操作无效,请联系管理员!";
 	/**
 	 * key是viewname，value是错误消息
@@ -101,6 +101,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 		ex.printStackTrace();
 		logger.error(ex);
 		//如果是json的时候怎么办？
+		//判断是不是以ResponseBody返回的
 		HandlerMethod handlerMethod = (HandlerMethod) handler;   
 		ResponseBody body = handlerMethod.getMethodAnnotation(ResponseBody.class);
 		if(body!=null){
