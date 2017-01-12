@@ -484,14 +484,14 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
      onUpdate:function(){
     	var me=this;
 
-    	var node=me.getSelectionModel( ).getLastSelected();
-    	if(node==null){
+    	var record=me.getSelectionModel( ).getLastSelected();
+    	if(record==null){
     		Ext.Msg.alert("提醒","请选择一行数据!");
     		return;
     	}
 
 		var formpanel=Ext.create('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Form',{});
-		formpanel.loadRecord(node);
+		formpanel.loadRecord(record);
 		
     	var win=Ext.create('Ext.window.Window',{
     		layout:'fit',
@@ -507,16 +507,16 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
     
     onDelete:function(){
     	var me=this;
-    	var node=me.getSelectionModel( ).getLastSelected( );
+    	var record=me.getSelectionModel( ).getLastSelected( );
 
-		if(!node){
+		if(!record){
 		    Ext.Msg.alert("消息","请先选择一行数据");	
 			return;
 		}
-		var parent=node.parentNode;
+		var parent=record.parentNode;
 		Ext.Msg.confirm("删除",'确定要删除吗?', function(btn, text){
 				if (btn == 'yes'){
-					node.erase({
+					record.erase({
 					    failure: function(record, operation) {
 			            	me.getStore().reload();
 					    },
