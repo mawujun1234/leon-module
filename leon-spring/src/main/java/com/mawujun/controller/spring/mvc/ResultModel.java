@@ -21,15 +21,15 @@ public class ResultModel extends ModelMap {
 		return model;
 	}
 	public	ResultModel setSuccess(boolean bool){
-		super.put("success", true);
+		this.put("success", bool);
 		return this;
 	}
 	public	ResultModel setMsg(String msg){
-		super.put("msg", msg);
+		this.put("msg", msg);
 		return this;
 	}
 	public	ResultModel setRoot(Object root){
-		super.put("root", root);
+		this.put("root", root);
 		return this;
 	}
 }
