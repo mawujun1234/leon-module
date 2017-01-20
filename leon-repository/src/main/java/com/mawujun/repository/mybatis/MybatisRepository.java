@@ -502,31 +502,43 @@ public class MybatisRepository  {
 		if(sqlNode instanceof MixedSqlNode){
 			 List<SqlNode> contentsOrginal=(List<SqlNode>) ReflectUtils.getFieldValue(sqlNode, "contents");
 			 List<SqlNode> contents=new ArrayList<SqlNode>();
-			 contents.addAll(contentsOrginal);
+			 
 			 
 			 //去掉order by语句
-			 int i=0;
-			 boolean removeSelectBool=true;
-			 for(SqlNode node:contentsOrginal){
-				 if(node instanceof StaticTextSqlNode){//TextSqlNode
-					 String sql=(String) ReflectUtils.getFieldValue(node, "text");
-					 //只对第一个select子句进行转换,忽略子查询中的select
-					 if(removeSelectBool){
-						 int fromIndex=sql.toLowerCase().indexOf("from");
-						 if(fromIndex>0){
-							 sql="select count (*) "+sql.substring(fromIndex);
-						 }
-						 removeSelectBool=false;
-					 }
-					 
-					 
-					 sql=removeOrders(sql);
-					 TextSqlNode text=new TextSqlNode(sql);
-					 contents.remove(i);
-					 contents.add(i, text);
-				 }
-				 i++;
-			 }
+			//2017.1.17 修改的，handlerRawSqlSource和handlerDynamicSqlSource一起改的
+			 //contents.addAll(contentsOrginal);
+			 TextSqlNode count_firat=new TextSqlNode("select count (*) from (");
+			 contents.add(count_firat);
+			 //添加原来的数据
+			 contents.addAll(contentsOrginal);
+			//2017.1.17 修改的，handlerRawSqlSource和handlerDynamicSqlSource一起改的
+			 //最后添加括号
+			 TextSqlNode count_leat=new TextSqlNode(")");
+			 contents.add(count_leat);
+//			 int i=0;
+//			 boolean removeSelectBool=true;
+//			 for(SqlNode node:contentsOrginal){
+//				 if(node instanceof StaticTextSqlNode){//TextSqlNode
+//					 String sql=(String) ReflectUtils.getFieldValue(node, "text");
+//					 //只对第一个select子句进行转换,忽略子查询中的select
+//					 if(removeSelectBool){
+//						 int fromIndex=sql.toLowerCase().indexOf("from");
+//						 if(fromIndex>0){
+//							 sql="select count (*) "+sql.substring(fromIndex);
+//						 }
+//						 removeSelectBool=false;
+//					 }
+//					 
+//					 
+//					 sql=removeOrders(sql);
+//					 TextSqlNode text=new TextSqlNode(sql);
+//					 contents.remove(i);
+//					 contents.add(i, text);
+//				 }
+//				 i++;
+//			 }
+			
+			
 			 
 //			 //也可以不用子查询，只需要把select 语句 替换成select count(*)，但是如果使用union或union all的时候
 //			 //就需要用子查询包起来再查总数，自动分页的时候也存在这个问题吧
@@ -589,10 +601,12 @@ public class MybatisRepository  {
 		StaticSqlSource sqlSourceOld=(StaticSqlSource) ReflectUtils.getFieldValue(rawSqlSourceOld, "sqlSource");
 		String sql=(String) ReflectUtils.getFieldValue(sqlSourceOld, "sql");
 		 sql=removeOrders(sql);
-		 int fromIndex=sql.toLowerCase().indexOf("from");
-		 if(fromIndex>0){
-			 sql="select count (*) "+sql.substring(fromIndex);
-		 }
+//		 int fromIndex=sql.toLowerCase().indexOf("from");
+//		 if(fromIndex>0){
+//			 sql="select count (*) "+sql.substring(fromIndex);
+//		 }
+		 ////2017.1.17 修改的，handlerRawSqlSource和handlerDynamicSqlSource一起改的
+		 sql="select count (*) from ("+sql+")";
 		 
 		
 		//sqlSourceOrginal.getBoundSql(parameterObject)

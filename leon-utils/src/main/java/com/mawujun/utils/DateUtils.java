@@ -8,10 +8,13 @@ import java.util.HashMap;
 
 public class DateUtils {
 	static SimpleDateFormat yyyy_MM_dd;
+	static SimpleDateFormat yyyyMMddHHmmss;
 	static HashMap<String,SimpleDateFormat> format_cache=new HashMap<String,SimpleDateFormat>();
 	static {
 		yyyy_MM_dd=new SimpleDateFormat("yyyy-MM-dd");
 		format_cache.put("yyyy-MM-dd", yyyy_MM_dd);
+		yyyyMMddHHmmss=new SimpleDateFormat("yyyyMMddHHmmss");
+		format_cache.put("yyyyMMddHHmmss", yyyyMMddHHmmss);
 	}
 	public static String format(Date date,String format) {
 		if(date==null){
@@ -37,6 +40,27 @@ public class DateUtils {
 			return null;
 		}
 		return yyyy_MM_dd.format(date);
+	}
+	/**
+	 * 格式yyyyMMddHHmmss
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param date
+	 * @return
+	 */
+	public static String format4Id(Date date) {
+		if(date==null){
+			return null;
+		}
+		return yyyyMMddHHmmss.format(date);
+	}
+	/**
+	 * 格式yyyyMMddHHmmss
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param date
+	 * @return
+	 */
+	public static String format4Id() {
+		return yyyyMMddHHmmss.format(new Date());
 	}
 	
 	
