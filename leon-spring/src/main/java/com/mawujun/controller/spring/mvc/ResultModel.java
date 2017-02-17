@@ -32,4 +32,7 @@ public class ResultModel extends ModelMap {
 		this.put("root", root);
 		return this;
 	}
+	public Object getRoot(){
+		return this.get("root");
+	}
 }
