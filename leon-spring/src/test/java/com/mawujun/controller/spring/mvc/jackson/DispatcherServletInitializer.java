@@ -25,30 +25,35 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
- * 这个类，默认就只是加载spring的DispatchServlet
- * http://hanqunfeng.iteye.com/blog/2114967
+ * 这个类，默认就只是加载spring的DispatchServlet http://hanqunfeng.iteye.com/blog/2114967
+ * 
  * @author mawujun qq:16064988 mawujun1234@163.com
  *
  */
-public class DispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
+public class DispatcherServletInitializer extends
+		AbstractAnnotationConfigDispatcherServletInitializer {
 	/**
 	 * 添加自定义的Servlet
 	 */
 	@Override
-	public void onStartup(ServletContext servletContext) throws ServletException {
+	public void onStartup(ServletContext servletContext)
+			throws ServletException {
 		super.onStartup(servletContext);
-//		//registerDispatcherServlet(servletContext);
-//		StatViewServlet statViewServlet=new StatViewServlet();
-//		ServletRegistration.Dynamic dynamic = servletContext.addServlet("DruidStatView", statViewServlet);  
-//        dynamic.setLoadOnStartup(2);  
-//        dynamic.addMapping("/druid/*");
+		//阿里的数据库连接池的状态配置
+		// //registerDispatcherServlet(servletContext);
+		// StatViewServlet statViewServlet=new StatViewServlet();
+		// ServletRegistration.Dynamic dynamic =
+		// servletContext.addServlet("DruidStatView", statViewServlet);
+		// dynamic.setLoadOnStartup(2);
+		// dynamic.addMapping("/druid/*");
 	}
+
 	/**
 	 * 加载service层的application
 	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
-		//return new Class<?>[] { WebSecurityConfig.class };
+		// return new Class<?>[] { WebSecurityConfig.class };
 		return null;
 	}
 
@@ -57,8 +62,9 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	 */
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return new Class<?>[] { MvcConfig.class};
-		//return new Class<?>[] { MvcConfig.class ,RepositoryConfig.class,ShiroConfig.class};
+		return new Class<?>[] { MvcConfig.class };
+		// return new Class<?>[] { MvcConfig.class
+		// ,RepositoryConfig.class,ShiroConfig.class};
 	}
 
 	/**
@@ -66,23 +72,46 @@ public class DispatcherServletInitializer extends AbstractAnnotationConfigDispat
 	 */
 	@Override
 	protected String[] getServletMappings() {
-		//System.out.println("-------------------------");
-		//return new String[] { "/" };
-		return new String[] {"*.do" };
+		// System.out.println("-------------------------");
+		// return new String[] { "/" };
+		return new String[] { "*.do" };
 	}
+
 	/**
-	 *  
-     * 注册过滤器，映射路径与DispatcherServlet一致，路径不一致的过滤器需要注册到另外的WebApplicationInitializer中 
-     * 参考ShiroWebApplicationInitializer
+	 * 
+	 * 注册过滤器，映射路径与DispatcherServlet一致，
+	 * 路径不一致的过滤器需要注册到另外的WebApplicationInitializer中
+	 * 参考ShiroWebApplicationInitializer
 	 */
 	@Override
-    protected Filter[] getServletFilters() {
-		CharacterEncodingFilter filter=new CharacterEncodingFilter();
+	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter filter = new CharacterEncodingFilter();
 		filter.setEncoding("UTF-8");
 		filter.setForceEncoding(true);
-        return new Filter[] { filter };
-    }
 
+//		// 跨域访问的配置，依赖cors-filter-1.7.jar，java-property-utils-1.9.jar这两个jar包
+//		// http://blog.csdn.net/u012500848/article/details/51162449
+//		// http://software.dzhuvinov.com/cors-filter-configuration.html
+//		CORSFilter corsfilter = new CORSFilter();
+//		Properties propes = new Properties();
+//		propes.setProperty("cors.allowOrigin", "*");
+//		propes.setProperty("cors.supportedMethods","GET, POST, HEAD, PUT, DELETE");
+//		propes.setProperty("cors.supportedHeaders","Accept, Origin, X-Requested-With, Content-Type, Last-Modified");
+//		propes.setProperty("cors.exposedHeaders", "Set-Cookie");
+//		propes.setProperty("cors.supportsCredentials", "true");
+//		CORSConfiguration corsconfiguration = null;
+//		try {
+//			corsconfiguration = new CORSConfiguration(propes);
+//		} catch (CORSConfigurationException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			throw new RuntimeException("初始化跨域访问过滤器异常....");
+//		}
+//		corsfilter.setConfiguration(corsconfiguration);
+//
+//		return new Filter[] { filter, corsfilter };
+		return new Filter[] { filter };
+	}
 
 	/**
 	 * 为DispatchServlet类设置额外的参数
