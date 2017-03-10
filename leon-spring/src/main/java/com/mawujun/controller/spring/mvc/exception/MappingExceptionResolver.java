@@ -28,7 +28,7 @@ public class MappingExceptionResolver extends SimpleMappingExceptionResolver {
 	private static Logger logger=LogManager.getLogger(MappingExceptionResolver.class);
 	
 	private String errorMsgAttribute = "msg";//异常消息的属性名称，可以自定义,也就是对异常进行文字化描述，而不是其他信息
-	private String defaultErrorMsg="系统异常，请稍候重试!如果多次操作无效,请联系管理员!";
+	private String defaultErrorMsg="系统异常,请联系管理员!";
 	/**
 	 * key是viewname，value是错误消息
 	 */
