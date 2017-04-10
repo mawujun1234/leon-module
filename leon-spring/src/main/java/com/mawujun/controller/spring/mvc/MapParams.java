@@ -1,5 +1,6 @@
 package com.mawujun.controller.spring.mvc;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -41,6 +42,14 @@ public class MapParams {
 
 	public void setParams(Map<String, Object> params) {
 		this.params = params;
+	}
+	
+	public void addParam(String key, Object value) {
+		if(this.params == null){
+			this.params=new HashMap<String,Object>();
+			
+		}
+		this.params.put(key, value);
 	}
 
 }
