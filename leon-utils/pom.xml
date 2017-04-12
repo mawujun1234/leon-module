@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <groupId>com.mawujun</groupId>
-  <artifactId>leon-util</artifactId>
+  <artifactId>leon-utils</artifactId>
   <name>${project.artifactId}</name>
   <url>http://maven.apache.org</url>
   <properties>
