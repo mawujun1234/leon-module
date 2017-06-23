@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.mawujun.repository.cnd.Cnd;
 import com.mawujun.utils.M;
-
+import com.mawujun.utils.page.Pager;
 
 import ${basepackage}.${simpleClassName};
 import ${basepackage}.${simpleClassName}Service;

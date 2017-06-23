@@ -1,17 +1,17 @@
 <#assign simpleClassNameFirstLower = simpleClassName?uncap_first> 
 <#-- //所在模块-->
 <#assign module = basepackage?substring(basepackage?last_index_of(".")+1)> 
-Ext.require("y.${module}.${simpleClassName}");
+Ext.require("${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}");
 <#if extenConfig.extjs_treeForm_model==false>
-Ext.require("y.${module}.${simpleClassName}Grid");
+Ext.require("${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid");
 </#if>
 <#if extenConfig.extjs_treeForm_model==true>
-Ext.require("y.${module}.${simpleClassName}Tree");
+Ext.require("${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Tree");
 </#if>
-Ext.require("y.${module}.${simpleClassName}Form");
+Ext.require("${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Form");
 Ext.onReady(function(){
 <#if extenConfig.extjs_treeForm_model==false>
-	var grid=Ext.create('y.${module}.${simpleClassName}Grid',{
+	var grid=Ext.create('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid',{
 		region:'center',
 		title:'XXX表格'
 	});
@@ -22,7 +22,7 @@ Ext.onReady(function(){
 	});
 </#if>
 <#if extenConfig.extjs_treeForm_model==true>
-	var tree=Ext.create('y.${module}.${simpleClassName}Tree',{
+	var tree=Ext.create('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Tree',{
 		title:'树',
 		width:400,
 		split:true,

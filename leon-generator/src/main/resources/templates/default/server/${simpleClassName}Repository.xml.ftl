@@ -12,8 +12,8 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
 <mapper namespace="<@namespace/>.${simpleClassName}Repository">
 	<!-- 查询语句，会自动分页-->
 	<sql id="queryPage_where">
+	<where>
 	<#list queryProperties as propertyColumn>
-		<where>
 		<#if propertyColumn.jsType=='date'>
 		<if test="${propertyColumn.property}_start!=null and ${propertyColumn.property}_start!=''">
     	 	and a.${propertyColumn.property} &gt= <@mapperEl value="${propertyColumn.property}"/>
@@ -26,11 +26,11 @@ PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
     	 	and a.${propertyColumn.property} = <@mapperEl value="${propertyColumn.property}"/>
     	</if>
 		</#if>
-		</where>
 	</#list>
+	</where>
 	</sql>
     <select id="queryPage" resultType="${className}" parameterType="map">
-    	select * from ${tableName}
+    	select * from ${tableName} a
     	<include refid="queryPage_where" />	
     </select> 
      <!-- 名称模式为：****_count,也可以不写，但如果查询叫复杂的话，自己写有助于控制查询性能-->

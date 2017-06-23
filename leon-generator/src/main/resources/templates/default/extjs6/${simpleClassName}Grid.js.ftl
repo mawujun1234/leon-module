@@ -341,6 +341,7 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
             	text:'查询',
             	iconCls:'icon-search',
             	handler:function(btn){
+            		<#--------
             		var grid=btn.up("grid");
 	            	grid.getStore().getProxy().extraParams=Ext.apply(grid.getStore().getProxy().extraParams,{
 	            		<#list queryProperties as propertyColumn>
@@ -359,6 +360,7 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
 		                </#list>
 	                });
             		grid.getStore().reload();
+            		------>
             		
             		var grid=btn.up("grid");
 					
