@@ -176,7 +176,7 @@ public class CndTest  extends DbunitBaseRepositoryTest {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		
 		Cnd cnd0=Cnd.select().andNotEquals("parent.name","AA");
-		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT parent.name='AA'",cnd0.toHql(classMetadata));
+		assertEquals("from com.mawujun.repository.EntityTest WHERE parent.name!='AA'",cnd0.toHql(classMetadata));
 	}
 	
 	@Test
@@ -334,7 +334,7 @@ public class CndTest  extends DbunitBaseRepositoryTest {
 		AbstractEntityPersister classMetadata=(AbstractEntityPersister)sessionFactory.getClassMetadata(EntityTest.class);
 		
 		Cnd cnd0=Cnd.select().andNotEquals("parent.name","AA").orNotEquals("parent.name","AA");
-		assertEquals("from com.mawujun.repository.EntityTest WHERE  NOT parent.name='AA' OR  NOT parent.name='AA'",cnd0.toHql(classMetadata));
+		assertEquals("from com.mawujun.repository.EntityTest WHERE parent.name!='AA' OR  NOT parent.name='AA'",cnd0.toHql(classMetadata));
 	}
 	@Test
 	public void orGT() {

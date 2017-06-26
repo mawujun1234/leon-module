@@ -36,6 +36,9 @@ public abstract class Exps {
 	public static SimpleExpression eq(String name, Object val) {
 		return new SimpleExpression(name, "=", val);
 	}
+	public static SimpleExpression eq_not(String name, Object val) {
+		return new SimpleExpression(name, "!=", val);
+	}
 
 	public static SimpleExpression gt(String name, long val) {
 		return new SimpleExpression(name, ">", val);

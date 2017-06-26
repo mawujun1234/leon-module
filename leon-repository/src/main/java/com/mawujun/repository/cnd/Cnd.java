@@ -1,21 +1,5 @@
 package com.mawujun.repository.cnd;
 
-//import static com.mawujun.repository.page.sql.Exps.gt;
-//import static com.mawujun.repository.page.sql.Exps.gte;
-//import static com.mawujun.repository.page.sql.Exps.inInt;
-//import static com.mawujun.repository.page.sql.Exps.inLong;
-//import static com.mawujun.repository.page.sql.Exps.inSql;
-//import static com.mawujun.repository.page.sql.Exps.inStr;
-//import static com.mawujun.repository.page.sql.Exps.like;
-//import static com.mawujun.repository.page.sql.Exps.lt;
-//import static com.mawujun.repository.page.sql.Exps.lte;
-
-import java.util.Collections;
-
-import org.hibernate.engine.spi.SessionFactoryImplementor;
-import org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory;
-import org.hibernate.hql.spi.QueryTranslator;
-import org.hibernate.hql.spi.QueryTranslatorFactory;
 import org.hibernate.persister.entity.AbstractEntityPersister;
 
 import com.mawujun.utils.Assert;
@@ -258,8 +242,15 @@ public class Cnd implements PItem{
 	}
 
 	public Cnd andNotEquals(String name, Object val) {
+//		if (null == val)
+//			return andIsNotNull(name);
+		this.getWhere().andNotEquals(name, val);
+		return this;
+
+	}
+	public Cnd andNotEqualsIf(String name, Object val) {
 		if (null == val)
-			return andIsNotNull(name);
+			return this;
 		this.getWhere().andNotEquals(name, val);
 		return this;
 
@@ -335,6 +326,13 @@ public class Cnd implements PItem{
 			return this;
 		}
 		this.getWhere().andLike(name, value,false);
+		return this;
+	}
+	public Cnd andLikeIf(String name, String value,Boolean ignore) {
+		if(value==null){
+			return this;
+		}
+		this.getWhere().andLike(name, value,ignore);
 		return this;
 	}
 

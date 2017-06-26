@@ -1,6 +1,7 @@
 package com.mawujun.repository.cnd;
 
 import static com.mawujun.repository.cnd.Exps.eq;
+import static com.mawujun.repository.cnd.Exps.eq_not;
 import static com.mawujun.repository.cnd.Exps.gt;
 import static com.mawujun.repository.cnd.Exps.gte;
 import static com.mawujun.repository.cnd.Exps.inInt;
@@ -51,7 +52,7 @@ public class SqlExpressionGroup implements SqlExpression {// extends AbstractPIt
 	public SqlExpressionGroup andNotEquals(String name, Object val) {
 		if (null == val)
 			return andNotIsNull(name);
-		return and(eq(name, val).not());
+		return and(eq_not(name, val));
 
 	}
 

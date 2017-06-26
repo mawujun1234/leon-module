@@ -66,6 +66,7 @@ public class ${simpleClassName}Controller {
 	
 
 	@RequestMapping("/${simpleClassNameFirstLower}/load.do")
+	@ResponseBody
 	public ${simpleClassName} load(${idType} id) {
 		return ${simpleClassNameFirstLower}Service.get(id);
 	}
