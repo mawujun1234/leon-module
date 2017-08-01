@@ -1,6 +1,5 @@
 package com.mawujun.generator;
 
-import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -16,6 +15,10 @@ import javax.persistence.IdClass;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import com.mawujun.generator.model.FK;
 import com.mawujun.generator.model.FieldDefine;
 import com.mawujun.generator.model.PropertyColumn;
 import com.mawujun.generator.model.PropertyColumnComparator;
@@ -24,7 +27,6 @@ import com.mawujun.generator.model.SubjectRoot;
 import com.mawujun.generator.other.DefaultNameStrategy;
 import com.mawujun.generator.other.NameStrategy;
 import com.mawujun.utils.ReflectUtils;
-import com.mawujun.utils.properties.PropertiesUtils;
 
 /**
  * 用于从领域模型中读取 meta信息的
@@ -32,6 +34,7 @@ import com.mawujun.utils.properties.PropertiesUtils;
  * @author mawujun qq:16064988 e-mail:16064988@qq.com
  */
 public class JavaEntityMetaDataService {
+	static Logger logger = LogManager.getLogger(JavaEntityMetaDataService.class.getName());
 
 	NameStrategy nameStrategy;
 	
@@ -162,7 +165,30 @@ public class JavaEntityMetaDataService {
 			if(propertyColumn.getGenQuery()){
 				queryProperties.add(propertyColumn);
 			}
-		}
+			
+			//开始外键的判断，或外键信息的获取，没在用，所以暂时注释了，别删除，，别删除，，别删除，，别删除，，别删除，，别删除，，别删除，
+//			FK fk=field.getAnnotation(FK.class);
+//			if(fk!=null){
+//				if(fk.cls()!=null){
+//					propertyColumn.setFk_class(fk.cls());
+//					//设置table
+//					SubjectRoot pkclass=cache.get(fk.cls().getName());
+//					if(pkclass==null){
+//						pkclass=initClassProperty( fk.cls());
+//					} 
+//					propertyColumn.setFk_table(pkclass.getTableName());
+//					
+//				} else if(fk.table()!=null){
+//					propertyColumn.setFk_table(fk.table());
+//				} else {
+//					logger.error(root.getClassName()+"的"+propertyColumn.getColumn()+"的FK定义没有配置cls和table!");
+//				}
+//				if(fk.column()!=null){
+//					propertyColumn.setFk_column(fk.column());
+//				}
+//			}
+			
+		}//for(Field field:fields){
 
 		//对属性显示的时候进行排序
 		propertyColumns.sort(new PropertyColumnComparator());

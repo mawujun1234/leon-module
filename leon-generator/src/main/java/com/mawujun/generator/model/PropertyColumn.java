@@ -29,6 +29,10 @@ public class PropertyColumn {
 	private String javaTypeClassName;//其实不用定义这个属性，其实是可以直接写get方法，下同
 	private String jsType;
 	
+	private Class fk_class;//外键关联的class
+	private String fk_table;//外键关联的表名
+	private String fk_column;//外键关联的列名
+	
 	
 	//private Boolean isIdProperty=false;//是不是属于id的列
 	//private Boolean isComponentType=false;
@@ -202,6 +206,30 @@ public class PropertyColumn {
 
 	public void setGenQuery(boolean genQuery) {
 		this.genQuery = genQuery;
+	}
+
+	public Class getFk_class() {
+		return fk_class;
+	}
+
+	public void setFk_class(Class fk_class) {
+		this.fk_class = fk_class;
+	}
+
+	public String getFk_table() {
+		return fk_table;
+	}
+
+	public void setFk_table(String fk_table) {
+		this.fk_table = fk_table;
+	}
+
+	public String getFk_column() {
+		return fk_column;
+	}
+
+	public void setFk_column(String fk_column) {
+		this.fk_column = fk_column;
 	}
 
 

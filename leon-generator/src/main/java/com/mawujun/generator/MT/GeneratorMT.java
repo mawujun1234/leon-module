@@ -20,12 +20,15 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Table;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.mawujun.generator.model.FK;
+import com.mawujun.generator.model.SubjectRoot;
 import com.mawujun.utils.Assert;
 import com.mawujun.utils.file.FileUtils;
 
@@ -35,7 +38,7 @@ import com.mawujun.utils.file.FileUtils;
  *
  */
 public class GeneratorMT {
-	 Logger logger = LogManager.getLogger(FileUtils.class);
+	 Logger logger = LogManager.getLogger(GeneratorMT.class);
 	
 	private Class annotationClass=javax.persistence.Entity.class;
 	private Class annotationTable=javax.persistence.Table.class;
@@ -55,7 +58,104 @@ public class GeneratorMT {
 		Assert.notNull(targetMDir);
 		Assert.notNull(targetPackage);
 		this.targetPackage=targetPackage;
-		generateM(getClasssFromPackage(packageName),targetMDir);
+		
+		List<Class> entities=getClasssFromPackage(packageName);
+		generateM(entities,targetMDir);
+	}
+	public void generateFK(String packageName,String targetMDir,String targetPackage) throws IOException{
+		Assert.notNull(packageName);
+		Assert.notNull(targetMDir);
+		Assert.notNull(targetPackage);
+		this.targetPackage=targetPackage;
+		
+		List<Class> entities=getClasssFromPackage(packageName);
+		generateFK_sql(entities,targetMDir);
+	}
+	private void generateFK_sql(List<Class> entities,String targetMDir) throws IOException{
+    	//生成M
+    	File file=new File(targetMDir+File.separatorChar+this.targetPackage.replace('.', File.separatorChar)+File.separatorChar+"FK_create.sql");
+    	//file.delete();
+    	if(!file.exists()){
+    		file.createNewFile();
+    	}
+    	FileWriter fileWrite=new FileWriter(file);
+
+//    	fileWrite.append("package "+this.targetPackage+";\n");
+//    	fileWrite.append("public final class M {\n");
+    	
+    	fileWrite.append("########################################这是添加外键约束的自动生成\n");
+    	for(Class clazz:entities){
+    		logger.info("============================================="+clazz.getName());
+
+    		
+    		 //Field[]fields = clazz.getDeclaredFields();
+    		 List<Field> fields= getClassField(clazz);
+    		 
+    		 //Set<String> existField=new HashSet<String>();
+             for (Field field : fields) { //完全等同于上面的for循环
+            	 FK fk=field.getAnnotation(FK.class);
+            	 
+            	 if(fk!=null){
+            		 String pk_tablename="";
+                	 String pk_column="";
+                	 String fk_tablename=gettablename(clazz);
+                	 String fk_column=getcloumnname(field);
+	     			if(fk!=null){
+	     				if(fk.cls()!=null){
+	     					Class pk_class=fk.cls();
+	     					pk_tablename=gettablename(pk_class);
+	     					
+	     					
+	     				} else if(fk.table()!=null){
+	     					pk_tablename=fk.table();
+	     				} else {
+	     					logger.error(clazz.toString()+"的"+field.getName()+"的FK定义没有配置cls和table!");
+	     				}
+	     				if(fk.column()!=null){
+	     					pk_column=fk.column();
+	     				}
+	     			}
+	     			 String fk_name="fk_"+fk_tablename+"_"+fk_column;
+	            	 fileWrite.append("--alter table "+fk_tablename+" drop constraint "+fk_name+";\n");
+	            	 //alter table HR_POSITION add constraint org_id_1 foreign key (ORG_ID) references hr_org (ID);
+	            	 fileWrite.append("alter table "+fk_tablename+" add constraint "+fk_name+" foreign key ("+fk_column+") references "+pk_tablename+" ("+pk_column+");\n");
+            	 }
+            	
+             }
+             
+    	}
+    	fileWrite.append("########################################结束\n");
+    	fileWrite.close();
+	}
+	private String getcloumnname(Field field){
+		String fk_column="";
+		 Column column=field.getAnnotation(Column.class);
+			if(column!=null){
+				if(column.name()!=null && !"".equals(column.name())){
+					fk_column=column.name();
+				} else {
+					fk_column=field.getName();
+				}
+			} else {
+				fk_column=field.getName();
+			}
+			return fk_column;
+	}
+	private String gettablename(Class clazz){
+		String pk_tablename="";
+		Table tableAnnotation=(Table)clazz.getAnnotation(Table.class);
+			if(tableAnnotation!=null){
+				pk_tablename=tableAnnotation.name();
+			} else {
+				Entity entityAnnotation=(Entity)clazz.getAnnotation(Entity.class);
+				if(entityAnnotation!=null){
+					pk_tablename=entityAnnotation.name();
+				} else {
+					//throw new RuntimeException("没有在实体类上添加@Entity注解");
+					pk_tablename=clazz.getName();
+				}
+			}
+			return pk_tablename;
 	}
 	
     /** 

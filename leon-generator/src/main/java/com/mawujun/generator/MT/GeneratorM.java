@@ -18,7 +18,11 @@ public class GeneratorM {
 		//generatorMT.generateM("com.mawujun","E:\\eclipse\\aaa\\knpcrm\\src\\main\\java","com.mawujun.utils");
 		//System.out.println(GeneratorM.class.getResource("/").getPath());
 		//System.out.println(System.getProperty("user.dir"));
-		generatorMT.generateM("com.mawujun",System.getProperty("user.dir")+"/src/main/java/","com.mawujun.utils");
+		String scan_package="com.mawujun";
+		String save_package="com.mawujun.utils";//保存的包名
+		String project_src=generatorMT.getClass().getResource("/").getPath()+"../../src/main/java";
+		generatorMT.generateM(scan_package,project_src,save_package);
+		generatorMT.generateFK(scan_package,project_src,save_package);
 	}
 
 }
