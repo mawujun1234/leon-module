@@ -236,6 +236,7 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Form'
 					failure: function(record, operation) {
 				    },
 				    success: function(record, operation) {
+				    	formpanel.fireEvent("saved",record);
 						button.up('window').close();
 				    }
 				});			

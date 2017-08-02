@@ -179,7 +179,7 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Tree'
     	var me=this;
     	var parent=node||me.getSelectionModel( ).getLastSelected( );
 		if(parent){
-		    me.getStore().reload({node:parent});
+		    me.getStore().load({node:parent});
 		} else {
 		    me.getStore().reload();	
 		}      
