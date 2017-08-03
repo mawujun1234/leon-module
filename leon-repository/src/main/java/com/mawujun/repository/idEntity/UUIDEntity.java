@@ -8,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 import org.hibernate.annotations.GenericGenerator;
+//import com.mawujun.annotation.FieldDefine;
+
+import com.mawujun.annotation.FieldDefine;
 
 /**
  * 统一定义id的entity基类.是使用UUID作为生成策略
@@ -23,16 +26,16 @@ public abstract class UUIDEntity  implements IdEntity<String>,Serializable{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	protected static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "org.hibernate.id.UUIDGenerator")
-	//@GenericGenerator(name = "idGenerator", strategy = "com.mawujun.model.UUIDGenerator")
-	//@GeneratedValue(generator="idGenerator")
-	@Column(length=36,updatable=false,unique=true)
-	//@Access(AccessType.PROPERTY)
-	@org.hibernate.annotations.AccessType("property")
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(
+	        name = "uuid",
+	        strategy = "org.hibernate.id.UUIDGenerator"
+	    )
+	@FieldDefine(title="id",sort=7,hidden=true)
+	@Column(length=36,nullable=false)
 	protected String id;
 
 	//@org.hibernate.annotations.AccessType("property")

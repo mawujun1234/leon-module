@@ -1,4 +1,4 @@
-package com.mawujun.generator.model;
+package com.mawujun.annotation;
 
 /**
  * 在前台展示的时候，使用什么类型

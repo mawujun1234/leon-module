@@ -1,4 +1,4 @@
-package com.mawujun.generator.model;
+package com.mawujun.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -27,7 +27,7 @@ import javax.persistence.Table;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mawujun.generator.model.FK;
+import com.mawujun.annotation.FK;
 import com.mawujun.generator.model.SubjectRoot;
 import com.mawujun.utils.Assert;
 import com.mawujun.utils.file.FileUtils;

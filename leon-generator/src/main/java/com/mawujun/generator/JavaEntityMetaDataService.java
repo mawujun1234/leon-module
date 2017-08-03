@@ -18,11 +18,10 @@ import javax.validation.constraints.NotNull;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.mawujun.generator.model.FK;
-import com.mawujun.generator.model.FieldDefine;
+import com.mawujun.annotation.FieldDefine;
+import com.mawujun.annotation.ShowType;
 import com.mawujun.generator.model.PropertyColumn;
 import com.mawujun.generator.model.PropertyColumnComparator;
-import com.mawujun.generator.model.ShowType;
 import com.mawujun.generator.model.SubjectRoot;
 import com.mawujun.generator.other.DefaultNameStrategy;
 import com.mawujun.generator.other.NameStrategy;
