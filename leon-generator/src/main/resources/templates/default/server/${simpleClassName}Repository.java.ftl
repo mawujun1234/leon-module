@@ -1,7 +1,7 @@
 package ${basepackage};
 
 import org.springframework.stereotype.Repository;
-import java.util.UUID;
+
 import com.mawujun.repository.IRepository;
 
 import ${basepackage}.${simpleClassName};

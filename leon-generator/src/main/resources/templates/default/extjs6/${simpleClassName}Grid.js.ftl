@@ -463,7 +463,13 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
 		});
 		child.set("id",null);
 		
-		var formpanel=Ext.create('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Form',{});
+		var formpanel=Ext.create('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Form',{
+			listeners:{
+    			saved:function(record){
+    				me.getStore().reload();
+    			}
+    		}
+		});
 		formpanel.loadRecord(child);
 		
     	var win=Ext.create('Ext.window.Window',{
@@ -475,9 +481,9 @@ Ext.define('${extenConfig.extjs_packagePrefix}.${module}.${simpleClassName}Grid'
     		closeAction:'hide',
     		items:[formpanel],
     		listeners:{
-    			close:function(){
-    				me.getStore().reload();
-    			}
+    			//close:function(){
+    			//	me.getStore().reload();
+    			//}
     		}
     	});
     	win.show();
