@@ -1,5 +1,7 @@
 package com.mawujun.generator;
 
+import com.mawujun.generator.model.SubjectSlave;
+
 /**
  * 用来做额外配置的
  * @author mawujun email:16064988@qq.com qq:16064988
@@ -32,6 +34,10 @@ public class ExtenConfig {
 	 * 是否增加 cellEditing,开启cellediting
 	 */
 	public boolean extjs_grid_enable_cellEditing=false;
+	
+	private Boolean isMasterSalve=false;
+	
+	private SubjectSlave subjectSlave;
 
 	public String getExtjs_packagePrefix() {
 		return extjs_packagePrefix;
@@ -71,6 +77,22 @@ public class ExtenConfig {
 
 	public void setExtjs_grid_enable_cellEditing(boolean extjs_grid_enable_cellEditing) {
 		this.extjs_grid_enable_cellEditing = extjs_grid_enable_cellEditing;
+	}
+
+	public Boolean getIsMasterSalve() {
+		return isMasterSalve;
+	}
+
+	public void setIsMasterSalve(Boolean isMasterSalve) {
+		this.isMasterSalve = isMasterSalve;
+	}
+
+	public SubjectSlave getSubjectSlave() {
+		return subjectSlave;
+	}
+
+	public void setSubjectSlave(SubjectSlave subjectSlave) {
+		this.subjectSlave = subjectSlave;
 	}
 
 

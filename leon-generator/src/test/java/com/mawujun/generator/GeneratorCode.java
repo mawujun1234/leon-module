@@ -34,6 +34,10 @@ public class GeneratorCode {
 		generatorService.setExtenConfig(aa);
 
 		generatorService.generatorAllFile(EntityTest.class);
+		
+//		//是否生成主从表的结构
+//		aa.setIsMasterSalve(true);
+//		generatorService.generatorAllFile(master, slave);
 
 	}
 	

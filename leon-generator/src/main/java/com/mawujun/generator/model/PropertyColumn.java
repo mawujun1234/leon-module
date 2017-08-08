@@ -3,9 +3,7 @@ package com.mawujun.generator.model;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class PropertyColumn {

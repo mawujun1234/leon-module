@@ -17,6 +17,7 @@ import org.apache.commons.lang3.SystemUtils;
 
 import com.mawujun.generator.model.FtlFileInfo;
 import com.mawujun.generator.model.SubjectRoot;
+import com.mawujun.generator.model.SubjectSlave;
 import com.mawujun.generator.other.NameStrategy;
 import com.mawujun.generator.other.OperatorJAR;
 import com.mawujun.utils.file.FileUtils;
@@ -270,6 +271,8 @@ public class GeneratorService {
 //		Class clazz=Class.forName(className);
 //		return generatorFileName(clazz,ftl);
 //	}
+	
+
 
 	/**
 	 * 
@@ -285,7 +288,7 @@ public class GeneratorService {
 	 * @throws SecurityException 
 	 * @throws NoSuchMethodException 
 	 */
-	public  void generatorAllFile(Class clazz) throws IOException, ClassNotFoundException, TemplateException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	public  SubjectRoot generatorAllFile(Class clazz) throws IOException, ClassNotFoundException, TemplateException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		initConfiguration();
 		/* 创建数据模型 */
 		SubjectRoot root =javaEntityMetaDataService.initClassProperty(clazz);
@@ -307,7 +310,36 @@ public class GeneratorService {
 		} else if(SystemUtils.IS_OS_WINDOWS){
 			Runtime.getRuntime().exec("cmd.exe /c start "+output);
 		}
+		return root;
 		
+	}
+	/**
+	 * 生成主从关系的结构
+	 * @author mawujun qq:16064988 mawujun1234@163.com
+	 * @param master
+	 * @param slave
+	 * @throws ClassNotFoundException
+	 * @throws NoSuchMethodException
+	 * @throws. SecurityException
+	 * @throws IllegalAccessException
+	 * @throws IllegalArgumentException
+	 * @throws InvocationTargetException
+	 * @throws IOException
+	 * @throws TemplateException
+	 */
+	public  void generatorAllFile(Class master,Class slave) throws ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, IOException, TemplateException {
+		ExtenConfig extenConfig=this.getExtenConfig();
+		extenConfig.setIsMasterSalve(true); 
+		//先生成明细表的数据
+		SubjectRoot slave_subject=generatorAllFile(slave);
+		SubjectSlave subjectSlave=new SubjectSlave();
+		subjectSlave.setSimpleClassName(slave_subject.getSimpleClassName());
+		subjectSlave.setFk_id(master.getSimpleName().toString()+"_id");
+		
+		
+		generatorAllFile(master);
+		
+		 
 	}
 	/**
 	 * 
