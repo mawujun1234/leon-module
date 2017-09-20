@@ -10,8 +10,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,17 +22,29 @@ public class ClearJavaComment {
     //public static String rootDir = "D:\\workspace\\proj_map\\src\\com";  
 //"D:\\testdir  
     // D:\\workspace\\proj_map\\src\\com  
+	static Set<String> excludePath=new HashSet<String>();
     public static void main(String args[]) throws FileNotFoundException,  
             UnsupportedEncodingException {  
-    	String rootDir = "D:\\workspace\\proj_map\\src\\com";
+    	excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\ext6");
+		excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\css");
+		excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\font");
+		excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\photoes");
+		excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\photoes_bak");
+		excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\qrcode_temp");
+		excludePath.add("E:\\eclipse\\aaa\\orderingSystem\\src\\main\\webapp\\war");
+		
+    	String rootDir = "E:\\eclipse\\aaa\\orderingSystem\\src";
     	//添加过滤文件类型的功能，只删除指定文件类型中的注释
     	//还可以添加排除的目录，或者指定目录
-        deepDir(rootDir,new String[] {"java","xml","properties","js"});  
+        deepDir(rootDir);  
   
     }  
   
-    public static void deepDir(String rootDir,String[] aaa) throws FileNotFoundException,  
-            UnsupportedEncodingException {  
+    public static void deepDir(String rootDir) throws FileNotFoundException,  
+            UnsupportedEncodingException { 
+    	if(excludePath.contains(rootDir)) {
+    		return;
+    	}
         File folder = new File(rootDir);  
         if (folder.isDirectory()) {  
             String[] files = folder.list();  
@@ -44,9 +58,11 @@ public class ClearJavaComment {
                 }  
             }  
         } else if (folder.isFile()) {  
+        	
             clearComment(folder.getPath());  
         }  
     }  
+
   
     /** 
      * @param currentDir 
@@ -61,8 +77,40 @@ public class ClearJavaComment {
      * @throws FileNotFoundException 
      * @throws UnsupportedEncodingException 
      */  
-    public static void clearComment(String filePathAndName)  
+    public static void clearComment(String filePathAndName )  
             throws FileNotFoundException, UnsupportedEncodingException {  
+    	 // 1、清除单行的注释，如： //某某，正则为 ：\/\/.*  
+        // 2、清除单行的注释，如：/** 某某 */，正则为：\/\*\*.*\*\/  
+        // 3、清除单行的注释，如：/* 某某 */，正则为：\/\*.*\*\/  
+        // 4、清除多行的注释，如:  
+        // /* 某某1  
+        // 某某2  
+        // */  
+        // 正则为：.*/\*(.*)\*/.*  
+        // 5、清除多行的注释，如：  
+        // /** 某某1  
+        // 某某2  
+        // */  
+        // 正则为：/\*\*(\s*\*\s*.*\s*?)*  
+    	 Map<String, String> patterns = new HashMap<String, String>(); 
+         if(filePathAndName.lastIndexOf(".java")!=-1 
+     			|| filePathAndName.lastIndexOf(".js")!=-1
+     			||filePathAndName.lastIndexOf(".css")!=-1) {
+         	 patterns.put("([^:])\\/\\/.*", "$1");// 匹配在非冒号后面的注释，此时就不到再遇到http://  
+              patterns.put("\\s+\\/\\/.*", "");// 匹配“//”前是空白符的注释  
+              patterns.put("^\\/\\/.*", "");  
+              patterns.put("^\\/\\*\\*.*\\*\\/$", "");  
+              patterns.put("\\/\\*.*\\*\\/", "");  
+              patterns.put("/\\*(\\s*\\*\\s*.*\\s*?)*\\*\\/", "");  
+              //patterns.put("/\\*(\\s*\\*?\\s*.*\\s*?)*", "");  
+     	} else if( filePathAndName.lastIndexOf(".xml")!=-1) {
+     		patterns.put("(?s)<!--.*?-->", ""); //xml中的<!-- -->注释
+     	} else if(filePathAndName.lastIndexOf(".properties")!=-1) {
+     		patterns.put("#.*", "");
+     	} else {
+     		return;
+     	}
+         
         StringBuffer buffer = new StringBuffer();  
         String line = null; // 用来保存每行读取的内容  
         InputStream is = new FileInputStream(filePathAndName);  
@@ -83,29 +131,13 @@ public class ClearJavaComment {
                 e.printStackTrace();  
             } // 读取下一行  
         }  
-        // 1、清除单行的注释，如： //某某，正则为 ：\/\/.*  
-        // 2、清除单行的注释，如：/** 某某 */，正则为：\/\*\*.*\*\/  
-        // 3、清除单行的注释，如：/* 某某 */，正则为：\/\*.*\*\/  
-        // 4、清除多行的注释，如:  
-        // /* 某某1  
-        // 某某2  
-        // */  
-        // 正则为：.*/\*(.*)\*/.*  
-        // 5、清除多行的注释，如：  
-        // /** 某某1  
-        // 某某2  
-        // */  
-        // 正则为：/\*\*(\s*\*\s*.*\s*?)*  
+       
         String filecontent = buffer.toString();  
   
-        Map<String, String> patterns = new HashMap<String, String>();  
-        patterns.put("([^:])\\/\\/.*", "$1");// 匹配在非冒号后面的注释，此时就不到再遇到http://  
-        patterns.put("\\s+\\/\\/.*", "");// 匹配“//”前是空白符的注释  
-        patterns.put("^\\/\\/.*", "");  
-        patterns.put("^\\/\\*\\*.*\\*\\/$", "");  
-        patterns.put("\\/\\*.*\\*\\/", "");  
-        patterns.put("/\\*(\\s*\\*\\s*.*\\s*?)*\\*\\/", "");  
-        //patterns.put("/\\*(\\s*\\*?\\s*.*\\s*?)*", "");  
+       
+        
+       
+        
         Iterator<String> keys = patterns.keySet().iterator();  
         String key = null, value = "";  
         while (keys.hasNext()) {  
