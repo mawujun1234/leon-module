@@ -29,20 +29,20 @@
     	<groupId>commons-io</groupId>
     	<artifactId>commons-io</artifactId>
     	<version>${commons-io.version}</version>
-    	<scope>test</scope>
+    	<!--<scope>test</scope>-->
     </dependency>
 
     <dependency>
     	<groupId>commons-codec</groupId>
     	<artifactId>commons-codec</artifactId>
     	<version>${commons-codec.version}</version>
-    	<scope>test</scope>
+    	<!-- <scope>test</scope> -->
     </dependency>
     <dependency>
     	<groupId>org.dbunit</groupId>
     	<artifactId>dbunit</artifactId>
     	<version>${org.dbunit.version}</version>
-    	<scope>test</scope>
+    	<!-- <scope>test</scope>-->
     </dependency>
     <dependency>
     	<groupId>org.apache.logging.log4j</groupId>
